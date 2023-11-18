@@ -293,7 +293,38 @@ h = numtwo
 volume = (3.14* r**2 * h)/3
 print('your voulmn of your right cone is ', volume)
 
+# numerical value determines the amount of o's in the string *************************
+# the value of s = the amount of o's in the string
+print('enter a value for the amount of o\'s in the string')
+spooky = int(input())
+string = "o" * spooky
+print('sp' + string + 'ky')
 
+# far far away exercise *************************
+farinput = int(input()) - 1
+farnum = 'far, ' * farinput
+lastfar = 'far'
+print('a long time ago in a galaxy ' + farnum + lastfar + ' away')
+
+# using a while loop to validate the inputs for exervise above
+print('enter a number between 1 and 5')
+while True:
+    farinput = int(input())
+    if farinput > 0 and farinput <= 5:
+        break
+    else:
+        print('please enter a number between 1 and 5')
+    
+
+if farinput > 1 and farinput <= 5:
+    farlimit = farinput - 1
+    farnum = 'far, ' * farlimit
+    print('a long time ago in a galaxy ' + farnum + 'far away')
+else:
+    if farinput == 1:
+        print('a long time ago in a galaxy far away')
+    else:
+        print('please enter a number between 1 and 5')
 
 
 # QUICK PYTHON EXERCISES ******************
