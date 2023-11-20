@@ -1,18 +1,29 @@
-print('enter a number between 1 and 5')
-while True:
-    farinput = int(input())
-    if farinput > 0 and farinput <= 5:
-        break
-    else:
-        print('please enter a number between 1 and 5')
-    
 
-if farinput > 1 and farinput <= 5:
-    farlimit = farinput - 1
-    farnum = 'far, ' * farlimit
-    print('a long time ago in a galaxy ' + farnum + 'far away')
-else:
-    if farinput == 1:
-        print('a long time ago in a galaxy far away')
+def dna_to_rna(dna):
+    if dna == '': # if the DNA sequence is empty, return an empty string
+        return dna
     else:
-        print('please enter a number between 1 and 5')
+        rna = dna.replace('T', 'U')
+        return rna # return the RNA sequence instead of printing it
+  
+    
+dna_sequence = 'AGTTCTTAAT' # DNA sequence
+rna_sequence = dna_to_rna(dna_sequence) # RNA sequence
+print(f'"{dna_sequence}" => "{rna_sequence}"')
+
+# optimized code
+def dna_to_rna(dna):
+    # Check if the DNA sequence is non-empty
+    if dna: # if dna does not equal ''
+        return dna.replace('T', 'U')
+    else:
+        # Return the empty string directly becuase dna is empty
+        return dna
+
+# Example usage
+dna_sequence = 'AGTTCTTAAT'  # DNA sequence
+rna_sequence = dna_to_rna(dna_sequence)  # RNA sequence
+print(f'"{dna_sequence}" => "{rna_sequence}"')
+
+
+

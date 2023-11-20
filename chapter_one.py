@@ -315,7 +315,6 @@ while True:
     else:
         print('please enter a number between 1 and 5')
     
-
 if farinput > 1 and farinput <= 5:
     farlimit = farinput - 1
     farnum = 'far, ' * farlimit
@@ -342,6 +341,29 @@ poemline2 = indentamount2 + poemsplit[2]
 poemline3 = indentamount2 + poemsplit[3]
 poemline4 = indentamount + poemsplit[5]
 
+# function example - the varibles are the parameters
+def add_numbers(number1, number2):
+    result = number1 + number2
+    return result
+
+# list example
+# Creating a list of integers
+numbers = [1, 2, 3, 4, 5]
+
+# Accessing elements
+first_number = numbers[0]  # Access the first element
+second_number = numbers[1] # Access the second element
+
+print("First number:", first_number)
+print("Second number:", second_number)
+
+# Modifying an element
+numbers[2] = 10  # Changing the third element from 3 to 10
+print("Modified list:", numbers)
+
+# Adding a new element
+numbers.append(6) # Adding a new element at the end
+print("List after adding a new element:", numbers)
 
 
 # chatGPT alternative code - Advance level code
@@ -361,8 +383,62 @@ for i, line in enumerate(poem_lines):
 formatted_poem = '\n'.join(poem_lines)
 print(formatted_poem)
 
-# exercise 3, program to display the current date and time
 
+# function with array for loop
+def countbynum (number1, number2):
+    countlist = [] # empty list
+    for n in range(1, number2 + 1): # range starts at 1, ends at number2 + 1
+        countlist.append(n * number1) # append the list with the product of n and number1
+    return countlist # return the list
+    
+numoutput = countbynum(2, 5)
+print(numoutput)
+
+# advance code for the exercise above
+def countbynum (number1, number2):
+    return [n * number1 for n in range(1, number2 + 1)] # list comprehension
+print(countbynum(2, 5))
+
+
+
+# new list is created with random letters from the list of letters **************
+
+import random
+letters = ['G', 'C', 'A', 'T'] # list of letters
+random_letters = [letters[random.randrange(len(letters))] for i in range(10)] # list comprehension, for loop is amount of times it runs, random.randrange(len(letters)) is the random number generator, len(letters) is the length of the list, outisde [] is the new list
+print(random_letters)
+random_letters_word = "".join(random_letters) # join() method takes all items in an iterable and joins them into one string.
+print(random_letters_word)
+random_letters_r = random_letters_word.replace('T', 'U') # replace() method replaces a specified phrase with another specified phrase.
+print(random_letters_r)
+
+# function to convert dna to rna
+
+def dna_to_rna(dna):
+    if dna == '': # if the DNA sequence is empty, return an empty string
+        return dna
+    else:
+        rna = dna.replace('T', 'U')
+        return rna # return the RNA sequence instead of printing it
+  
+    
+dna_sequence = 'AGTTCTTAAT' # DNA sequence
+rna_sequence = dna_to_rna(dna_sequence) # RNA sequence
+print(f'"{dna_sequence}" => "{rna_sequence}"')
+
+# optimized code
+def dna_to_rna(dna):
+    # Check if the DNA sequence is non-empty
+    if dna: # if dna does not equal ''
+        return dna.replace('T', 'U')
+    else:
+        # Return the empty string directly becuase dna is empty
+        return dna
+
+# Example usage
+dna_sequence = 'AGTTCTTAAT'  # DNA sequence
+rna_sequence = dna_to_rna(dna_sequence)  # RNA sequence
+print(f'"{dna_sequence}" => "{rna_sequence}"')
 
 
 
