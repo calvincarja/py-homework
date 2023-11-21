@@ -5,6 +5,32 @@
 hello = "hello world"
 print("%s" % hello)
 
+# list example
+# Creating a list of integers
+numbers = [1, 2, 3, 4, 5]
+
+# Accessing elements
+first_number = numbers[0]  # Access the first element
+second_number = numbers[1] # Access the second element
+
+print("First number:", first_number)
+print("Second number:", second_number)
+
+# Modifying an element
+numbers[2] = 10  # Changing the third element from 3 to 10
+print("Modified list:", numbers)
+
+# Adding a new element
+numbers.append(6) # Adding a new element at the end
+print("List after adding a new element:", numbers)
+
+# function example - the varibles are the parameters
+def add_numbers(number1, number2):
+    result = number1 + number2
+    return result
+
+
+
 # module
 from mdlu import greet 
 greet("calvin")
@@ -341,34 +367,10 @@ poemline2 = indentamount2 + poemsplit[2]
 poemline3 = indentamount2 + poemsplit[3]
 poemline4 = indentamount + poemsplit[5]
 
-# function example - the varibles are the parameters
-def add_numbers(number1, number2):
-    result = number1 + number2
-    return result
-
-# list example
-# Creating a list of integers
-numbers = [1, 2, 3, 4, 5]
-
-# Accessing elements
-first_number = numbers[0]  # Access the first element
-second_number = numbers[1] # Access the second element
-
-print("First number:", first_number)
-print("Second number:", second_number)
-
-# Modifying an element
-numbers[2] = 10  # Changing the third element from 3 to 10
-print("Modified list:", numbers)
-
-# Adding a new element
-numbers.append(6) # Adding a new element at the end
-print("List after adding a new element:", numbers)
-
 
 # chatGPT alternative code - Advance level code
 # code below represents the poem line indent code. for each mentioned position of poemsplit, assing it a number 
-
+poem = 'Twinkle, twinkle, little star \n How I wonder what you are! \n Up above the world so high, \n Like a diamon in the sky. \n Twinkle, twinkle, little star, \n How I wonder what you are'
 poem_lines = poem.split('\n')
 
 # Example: Dictionary mapping line indices to their indentation levels
@@ -384,11 +386,11 @@ formatted_poem = '\n'.join(poem_lines)
 print(formatted_poem)
 
 
-# function with array for loop
+# function to output the multiple of two numbers ******************
 def countbynum (number1, number2):
     countlist = [] # empty list
     for n in range(1, number2 + 1): # range starts at 1, ends at number2 + 1
-        countlist.append(n * number1) # append the list with the product of n and number1
+        countlist.append(n * number1) # append/update the list with the product of n and number1
     return countlist # return the list
     
 numoutput = countbynum(2, 5)
@@ -429,7 +431,7 @@ print(f'"{dna_sequence}" => "{rna_sequence}"')
 # optimized code
 def dna_to_rna(dna):
     # Check if the DNA sequence is non-empty
-    if dna: # if dna does not equal ''
+    if dna: # if dna does not equal '', truthy value
         return dna.replace('T', 'U')
     else:
         # Return the empty string directly becuase dna is empty
@@ -441,4 +443,130 @@ rna_sequence = dna_to_rna(dna_sequence)  # RNA sequence
 print(f'"{dna_sequence}" => "{rna_sequence}"')
 
 
+# two functions calculation for varible values ******************
+numyoung = 0
+nummiddle = 0
 
+
+def young (age):
+    global numyoung
+    if age >= 0 and age <= 50:
+        numyoung = age
+        return numyoung
+    else:
+        return 0
+
+def middle (age):
+    global numyoung, nummiddle
+    if age >= numyoung and age <= 50:
+        nummiddle = age
+    else:
+        return 0
+    
+young(12)
+middle(15)
+print(numyoung)
+print(nummiddle)
+numold = (nummiddle - numyoung) + nummiddle
+print(numold)
+
+# advance code for the exercise above
+def calculate_ages(youngest_age, middle_age):
+    if youngest_age < 0 or middle_age < 0:
+        return "Error: Age cannot be negative" 
+
+    if 0 <= youngest_age <= 50 and youngest_age <= middle_age <= 50: 
+        oldest_age = (middle_age - youngest_age) + middle_age
+        return youngest_age, middle_age, oldest_age
+    else:
+        return "Error: Invalid age range"
+
+# Example usage
+youngest = 12
+middle = 15
+ages = calculate_ages(youngest, middle)
+
+# only output the oldest age if there is no error
+# Check if the function returned an error message
+if isinstance(ages, str): # if ages is a string, then ages is an error message
+    print(ages)
+else:
+    # Unpack the tuple to get the oldest age
+    _, _, oldest = ages # _ means we don't care about the value
+    print("Oldest age:", oldest)
+
+# function to return an interger from a string ******************
+def str_to_int(word): # codewars gives me an error b/c they want a specific name for the function
+    return int(word) # its good practice to retrun the value instead of printing it
+str_to_int("1234")
+
+# function to return string based on value ******************
+def bmi (weight, height):
+    bmi =  weight / height ** 2
+    if bmi <= 18.5:
+        return "underweight"
+    elif bmi <= 25:
+        return "normal"
+    elif bmi <= 30:
+        return "overweight"
+    else:
+        return "obese"
+    
+print(bmi(80, 1.8))
+
+# function for liters per hour ******************
+import math
+water = 0.5 #liters per hour
+
+def litres (time):
+    amount =  water * time
+    return math.floor(amount)
+
+
+print(litres(3))
+
+# advance code for the exercise above
+def litres(time):
+    return time // 2
+
+# calculate rate of pay with overtime ******************
+hourstrng = input()
+hoursint = float(hourstrng)
+ratestrng = input()
+rateint = float(ratestrng)
+if hoursint > 40:
+    pay = 40 * rateint + (hoursint - 40) * rateint * 1.5 # 1.5 times the hourly rate for hours worked above 40 hours
+else:
+    pay = hoursint * rateint
+
+print(pay)
+
+# else if statement exercise ******************
+student = input('Enter your score: ')
+score = float(student)
+if score < 0.0 or score > 1.0:
+    print('Error')
+elif score >= 0.9:
+    print('A')
+elif score >= 0.8:
+    print('B')
+elif score >= 0.7:
+    print('C')
+elif score >= 0.6:
+    print('D')
+else:
+    print('F')
+
+
+# library to solve for an equation ******************
+from sympy import symbols, Eq, solve
+
+# Define the symbol
+y = symbols('y')
+
+# Define the equation
+equation = Eq(y + 10, 20)
+
+# Solve the equation
+solution = solve(equation, y)
+print(solution)
