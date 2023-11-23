@@ -635,3 +635,109 @@ largest = max(userlist)
 smallest = min(userlist)
 print("Maximum is", largest)
 print("Minimum is", smallest)
+
+# function to determine baskeball winner, global vs local varible ******************
+# why my version didnt work
+'''The issue you're encountering is due to the scope of the variables atotal and btotal. 
+The atotal inside the function apple_score is a local variable, meaning it only exists within the function's scope. 
+When you assign a value to atotal inside the function, it doesn't affect the global atotal defined at the start of your code.'''
+
+atotal = 0
+btotal = 0
+
+def apple_score (a,b,c):
+    atotal = (a*3)+(b*2)+(c*1)
+    return atotal
+
+def banna_score(a, b, c):
+    btotal =  (a * 3) + (b * 2) + (c * 1)
+    return btotal
+
+apple_score(10, 3, 7)
+print(atotal)
+
+# the correct version
+def apple_score (a,b,c):
+    return (a*3)+(b*2)+(c*1)
+
+def banna_score(a, b, c):
+    return (a * 3) + (b * 2) + (c * 1)
+
+atotal = apple_score(10, 3, 7)
+btotal = banna_score(8, 9, 6)
+
+if atotal > btotal:
+    print("Apple wins!")
+elif atotal < btotal:
+    print("Banna wins!")
+else:
+    print("It's a tie!")
+
+# chatgpt version of the exercise above - create one function to calculate the score
+def calculate_score(three_pointers, two_pointers, free_throws):
+    return (three_pointers * 3) + (two_pointers * 2) + (free_throws * 1)
+
+# refernce the function twice to calculate the score for each team
+apple_score = calculate_score(10, 3, 7)
+banna_score = calculate_score(8, 9, 6)
+
+# multiple if statements are treated independently, else if statements are treated as one
+
+# if statement with multiple conditions ******************
+# my code below
+print('Enter a 4 digit phone number, seperated by (-):')
+phone = input()
+phone_split = phone.split('-') # split the phone number into a string list
+
+# analyze the one time phone number
+if int(phone_split[0]) in range(8, 10) and int(phone_split[3]) in range(8, 10) and int(phone_split[1]) == int(phone_split[2]):
+    print('telemarketer, dont answer')
+else:
+    print('answer')
+
+# chatgpt version of the exercise above, however there is no loop to ask the user to re-enter the phone number
+print('Enter a 4 digit phone number, separated by dashes (e.g., 8-1-1-9):')
+
+try:
+    phone = input()
+    phone_split = phone.split('-')  # split the phone number into a string list
+
+    if len(phone_split) != 4:
+        raise ValueError("Please enter exactly four digits separated by dashes.")
+
+    # Convert all segments to integers and store them in a list
+    digits = [int(segment) for segment in phone_split]
+
+    # use parenthesis to make the if statement more readable and determine order of operations
+    if (digits[0] == 8 or digits[0] == 9) and \
+       (digits[1] == digits[2]) and \
+       (digits[3] == 8 or digits[3] == 9):
+        print('Telemarketer, dont answer')
+    else:
+        print('Answer')
+except ValueError as e:
+    print(f"Invalid input: {e}")
+
+# loop iteration to ask user to re-enter the phone number
+while True:
+    try:
+        print('Enter a 4 digit phone number, separated by dashes (e.g., 8-1-1-9):') # ask the user to enter a phone number inside the loop
+        phone = input()
+        phone_split = phone.split('-')
+
+        if len(phone_split) != 4:
+            print("Please enter exactly four digits separated by dashes.")
+            continue
+
+        digits = [int(segment) for segment in phone_split] # convert all segments to integers and store them in a list
+        if (digits[0] == 8 or digits[0] == 9) and (digits[1] == digits[2]) and (digits[3] == 8 or digits[3] == 9): # use parenthesis to make the if statement more readable and determine order of operations
+            print('Telemarketer, don\'t answer')
+            break
+        else:
+            print('Answer')
+            break
+
+    except ValueError: # if the user enters a non-integer value, ValueError will be raised
+        print("Invalid input. Please ensure you enter numbers.") # print an error message and continue the loop
+    
+        
