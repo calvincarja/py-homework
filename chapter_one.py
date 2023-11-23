@@ -570,3 +570,68 @@ equation = Eq(y + 10, 20)
 # Solve the equation
 solution = solve(equation, y)
 print(solution)
+
+# exercise to demonstrate the use of the library above
+from sympy import symbols, Eq, solve
+
+cinput = int(input()) # input will be between -40 and 40
+
+celsius = cinput
+
+fahrenheit = symbols('fahrenheit')
+
+equation = Eq((celsius * 9/5) + 32, fahrenheit)
+
+fahrenheit_value = int(solve(equation, fahrenheit)[0]) # removes the decimals from the answer
+
+print(fahrenheit_value)
+
+# passing a user input to a function ******************
+def add_numbers(a, b):
+    # Perform some calculation with the arguments
+    return a + b
+
+# Prompting for user input outside the function
+first_number = float(input("Enter the first number: "))
+second_number = float(input("Enter the second number: "))
+
+# Calling the function with user input as arguments
+result = add_numbers(first_number, second_number)
+print(f"The result of adding {first_number} and {second_number} is {result}.")
+
+# example of a function passing a user input
+def computepay(h,r):
+    if h > 40:
+        pay = 40 * r + (h - 40) * r * 1.5 # 1.5 times the hourly rate for hours worked above 40 hours
+    else:
+        pay = h * r
+    return pay
+
+hrsinput = input("Enter Hours:")
+hrsint = float(hrsinput)
+rateinput = input("Enter Rate:")
+rateint = float(rateinput)
+p = computepay(hrsint,rateint)
+print(p)
+
+
+# function with while loop and list ******************
+userlist = [] # empty list, intialize before the loop
+largest = None
+smallest = None
+while True:
+    try:
+        num = input("Enter a number: ")
+        if num == "done": # check for the sentinel value, if true, break out of the loop
+            break
+        else:
+            isnum = int(num)
+            userlist.append(isnum)
+    except:
+        print("Invalid input")
+        continue
+
+largest = max(userlist)
+smallest = min(userlist)
+print("Maximum is", largest)
+print("Minimum is", smallest)
