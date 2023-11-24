@@ -740,4 +740,111 @@ while True:
     except ValueError: # if the user enters a non-integer value, ValueError will be raised
         print("Invalid input. Please ensure you enter numbers.") # print an error message and continue the loop
     
-        
+
+# multiple functions and summing them ******************
+def burger_choice(choice):
+    if choice == 1: # cheeseburger
+        return 461
+    elif choice == 2: # fish burger
+        return 431
+    elif choice == 3: # veggie burger
+        return 420
+    else:
+        return 0
+    
+def side_choice(choice):
+    if choice == 1: # fries
+        return 100
+    elif choice == 2: # baked potato
+        return 57
+    elif choice == 3: # chef salad
+        return 70
+    else:
+        return 0
+    
+def drink_choice(choice):
+    if choice == 1: # soft drink
+        return 130
+    elif choice == 2: # orange juice
+        return 160
+    elif choice == 3: # milk
+        return 118
+    else:
+        return 0
+
+def dessert_choice(choice):
+    if choice == 1: # apple pie
+        return 167
+    elif choice == 2: # sundae
+        return 266
+    elif choice == 3: # fruit cup
+        return 75
+    else:
+        return 0
+
+total_calories = burger_choice(int(input())) + side_choice(int(input())) + drink_choice(int(input())) + dessert_choice(int(input()))
+print("Your total Calorie count is " + str(total_calories) + ".")
+
+# date function, user input function, and if statement ******************
+# lets import datetime
+import datetime
+
+
+# we do not need a dictionary, we can just use the datetime tools
+# my_dict = {1: 'jan', 2: 'feb', 3: 'march', 4: 'april', 5: 'may', 6: 'june', 7: 'july', 8: 'aug', 9: 'sept', 10: 'oct', 11: 'nov', 12: 'dec'}
+
+# lets create a function that will accept two varibles
+def create_date(month_num, day_num): # pass two varibles to the function
+    year = 2023 # set the year
+    return datetime.date(year, month_num, day_num) # return the date, the datetime will convert the month_num to the month name and the day_num to the day number. 
+
+# lets accept a user input
+# lets validate the user input
+while True:
+    try: # try is the happy path
+        month_input = int(input('Enter a month in single digit format: ')) # ask the user for a date in the format of a single digit
+        day_input = int(input('Enter a day in single digit format: ')) # ask the user for a day in the format of a single digit
+        # lets create a varible that will call the function
+        user_date = create_date(month_input, day_input) # pass the two varibles to the function
+        break # break the loop if no ValueError occurs
+    except ValueError: # if a ValueError occurs, the except will run
+        print("Invalid input. Please enter a valid date.")
+
+# now lets compare the date 
+
+feb_date = create_date(2, 18) # create a varible that will call the function for specific date
+
+if user_date == feb_date: # if the user_date is the same as feb_date
+    print('Happy Birthday!') # print Happy Birthday
+elif user_date > feb_date:
+    print('After')
+else:
+    print('Before') 
+
+# counter and reference spefic key in dictionary ******************
+from collections import Counter
+
+# i need an input to store the sentence
+text = ":-) i am happy :-) but at times i am sad :-("
+
+# i want something to split my sentence into words
+words = text.split()
+
+print(words)
+
+# i want somethign to count the amount of words repeat in the sentence
+
+amount = Counter(words) # counter creats a dictionary of words and their counts
+
+happy = ':-)' # happy face is present in the counter dictionary, so it can be referenced as a key via [happy]
+sad = ':-(' # sad face is present in the counter dictionary, so it can be referenced as a key via [happy]
+
+if amount[happy] > amount[sad]:
+    print("happy")
+elif amount[happy] < amount[sad]:
+    print("sad")
+else:
+    print("unsure")
+
+
+
