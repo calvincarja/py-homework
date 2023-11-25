@@ -846,5 +846,31 @@ elif amount[happy] < amount[sad]:
 else:
     print("unsure")
 
+# sort user input, for statement, strip, split & isdigit ******************
+
+num = input("Enter numbers seperated by commas: ")
+order = input("Enter asc or desc: ")
+
+def num_sort(num,order):
+    try:
+        num_list = [int(n) for n in num.split(",") if n.strip().isdigit()] # the for loop will run through each instance and the IF statement will check if it is a digit. the result will be placed in a list. 
+    # validate the list contains the same number of items as the original string
+        if len(num_list) != len(num.split(",")):
+            raise ValueError ("inputs contains non-numeric characters") # the if statement catches non-numeric characters and raises an error
+        
+        if order == "asc":
+            num_split = num.split(",")
+            num_sort = sorted(num_list)
+            return num_sort
+        elif order == "desc":
+            num_split = num.split(",")
+            num_sort = sorted(num_list, reverse=True)
+            return num_sort
+        else:
+            return ("invalid input for order") # catches invalid input for order
+    except ValueError as err: # catches invalid input for num, however, is.digit() will catch non-numeric characters. this is an extra layer of protection
+        return f"Invalid input: {err}"
+
+print(num_sort(num,order))
 
 
