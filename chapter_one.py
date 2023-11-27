@@ -851,6 +851,7 @@ else:
 num = input("Enter numbers seperated by commas: ")
 order = input("Enter asc or desc: ")
 
+# lets create a function that will accept two varibles but validate the input
 def num_sort(num,order):
     try:
         num_list = [int(n) for n in num.split(",") if n.strip().isdigit()] # the for loop will run through each instance and the IF statement will check if it is a digit. the result will be placed in a list. 
@@ -874,3 +875,16 @@ def num_sort(num,order):
 print(num_sort(num,order))
 
 
+# decimal in programming refers to the base-10 number system exercise *********
+while True:
+    try:
+    # converting a decimal (base of 10) number to binary
+        usernum = float(input("Enter decimal number: ")) # input needs to be turned into a float(float accepts deciamls),
+        mathnum = bin(int(float(usernum)))
+        print(mathnum)
+        break
+    except ValueError as bad: # catches word in place of number
+        print(f"bad input: {bad}")
+
+
+    
