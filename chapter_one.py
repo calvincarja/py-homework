@@ -885,6 +885,9 @@ while True:
         break
     except ValueError as bad: # catches word in place of number
         print(f"bad input: {bad}")
+# the ValueError is a type of exception that is raised when an operation or function 
+# receives an argument that has the right type but an inappropriate value, 
+# and it needs to be caught in a try-except block.
 
 
     
