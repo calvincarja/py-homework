@@ -890,4 +890,62 @@ while True:
 # and it needs to be caught in a try-except block.
 
 
+# count() refernce a list of words in a sentence exercise ******************
+
+# The .count() method on a string object is used to count the occurrences of a substring within the string, 
+# not individual characters.
+# turning the list into a string, then using the count() method on the string will see the values as a whole, not individual characters
+'''
+vowels = ['a', 'e', 'i', 'o', 'u'] # list of letters i am looking for in a sentence
+my_string = ''.join(vowels) # convert list to string so i may use a count() method (count() method only works on strings)
+sentence = 'hi my name is calvin, how are you' # sentence to search
+lowercase = sentence.lower() # convert sentence to lowercase
+vword = lowercase.count(my_string) 
+print(vword) # print the number of times the vowels appear in the sentence
+'''
+
+# i want to see each instance in the list, not the total number of instances. Thus, I need to search for each letter individually
+
+vowels = ['a', 'e', 'i', 'o', 'u'] # list of letters i am looking for in a sentence
+sentence = 'hi my name is calvin, how are you' # sentence to search
+lowercase = sentence.lower() # convert sentence to lowercase
+vword = 0 # set the counter to 0 for my loop
+
+for i in vowels: # loop through each letter in the list
+    vword += lowercase.count(i) # add the number of times each letter appears in the sentence to the counter
+    print(i, lowercase.count(i)) # print the letter and the number of times it appears in the sentence
+
+# function example
+vowels = ['a', 'e', 'i', 'o', 'u'] # list of letters i am looking for in a sentence
+def count_vowels(word): # define a function to count the vowels
+    lowercase = word.lower() # convert sentence to lowercase
+    vword = 0 # set the counter to 0 for my loop
+    for i in vowels: # loop through each letter in the list
+        vword += lowercase.count(i) # add the number of times each letter appears in the sentence to the counter
+        print(i, lowercase.count(i)) # print the letter and the number of times it appears in the sentence
+
+sentence = input('enter a sentence: ') # sentence to search
+count_vowels(sentence) # call the function
+
+
+# credit card function - slice string at specific amount exercise ********************
+# ask the user to input a credit card number
+
+def get_cc(cc):
+    while True:
+        try:
+            if not cc.isdigit(): # i can check only for integers with isdigit() without needing to turn the input into an integer
+                raise ValueError("only input digits")
+            elif len(cc) != 16:
+                print('enter only 16 digits')
+            else: # slice the string based on a starting position
+                cc_user = cc[-4:] # the -4 is the starting point of where you want to slice the string
+                return cc_user
+                break
+        except ValueError as bad:
+            print(f"bad input: {bad}")
+
+cc = input('enter your 16-digit number: ')
+print(get_cc(cc))
+
     
