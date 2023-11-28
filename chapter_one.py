@@ -948,4 +948,25 @@ def get_cc(cc):
 cc = input('enter your 16-digit number: ')
 print(get_cc(cc))
 
+
+# dictionary rock paper scissors exercise **********************
+
+# paper beats rock / paper looses to scissors
+# rock looses to paper / rock beats scissors
+# scissors looses to paper / scissors beats paper   
+# create a dictionary where the keys are the choses (left side) and values is what they beat (right side)
+
+rules = {'paper': 'rock',
+         'rock': 'scissors',
+         'scissors': 'paper'
+         }
+
+def rps(p1,p2):
+    if p1==p2:
+        return 'its a tie'
+    elif rules[p1] == p2: # rules[p1] looks for the value associated to the key (user input of scissors, rock or paper) then it returns the value. if the value matches what p2 enters, then we know player 1 won
+        return 'player 1 won!'
+    else:
+        return 'player 2 won'
+
     
