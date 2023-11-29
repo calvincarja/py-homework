@@ -970,3 +970,24 @@ def rps(p1,p2):
         return 'player 2 won'
 
     
+# if elif, subtraction operator
+# my version
+def rental_car_cost(d):
+    if d >= 7:
+        cost = (d*40) - 50
+    elif d >= 3 and d < 7:
+        cost = (d*40) - 20
+    else:
+        cost = d*40
+    return cost
+
+print(rental_car_cost(4))
+
+# alt version
+def rental_car_cost(d):
+    result = d * 40 # establish the varaible
+    if d >= 7:
+        result -= 50 # based on the result, -= is subtracing from total
+    elif d >= 3:
+        result -= 20 
+    return result # no need for else statement
