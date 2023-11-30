@@ -991,3 +991,28 @@ def rental_car_cost(d):
     elif d >= 3:
         result -= 20 
     return result # no need for else statement
+
+
+# array, list of strings and integers turn into a list of integers exercise **********************
+
+# Given an array of integers as strings and numbers, (complete)
+# return the sum of the array values as if all were numbers. (complete)
+# Return your answer as a number. (complete)
+# provide function
+
+
+
+def sum_mix(arr): # pass an array of integers as strings and numbers
+    for i in range(len(arr)): # loop through the array with range of length of array
+        arr[i] = int(arr[i]) # convert the array to integers
+    return sum(arr) # return the sum of the array values as if all were numbers
+
+arr = [5, '3', 6, '7'] # array of integers as strings and numbers
+print(sum_mix(arr)) # pass the array to the function and print the result
+    
+
+# using map() below
+def sum_mix(arr):
+    return sum(map(int, arr)) # map() applies the int() function to each element of the array
+
+
