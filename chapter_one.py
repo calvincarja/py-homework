@@ -1016,3 +1016,77 @@ def sum_mix(arr):
     return sum(map(int, arr)) # map() applies the int() function to each element of the array
 
 
+# using absolut value to find a negative number
+# using if statement to find negative number
+def make_negative( number ):
+    if number >= 0:
+        return number*-1
+    elif number < 0:
+        return number
+    
+# using abosulte value to find negative number
+
+def make_negative( number ):
+    return -abs(number)
+
+# slope formula function exercise **************************
+# slope formula = (y2 - y1)/(x2 - x1)
+
+# function method
+
+def cal_slope(point1, point2):
+    return (point2[1] - point1[1])/ (point2[0] - point1[0])
+
+point1 = (2,2)
+point2 = (6,4)
+
+slope = cal_slope(point1,point2)
+
+print(slope)
+
+# for loop output in same line, adding + to each instance exercise ********************
+# receive a number -- find the sum of the number from 1 to Num
+# number will always be postive > 0
+# math formula --> s = n(n + 1)/2
+# example: 8 --> 36(total sum)(complete) (1+2+3+4+5+6+7+8)(breakdown)
+
+
+num = 8
+
+total = num*(num + 1)/2
+print(total)
+
+for i in range(1, num+1):
+    if i < num:
+        print(i, end='+')
+    else:
+        print(i)
+
+# no if statement
+num = 8
+
+total = num*(num + 1)/2
+print(total)
+
+for i in range(1, num): # run the for loop from 1 to 7 (num - 1)
+    print(i, end='+') # it will add a + from 1 to 7
+print(num) # print the num (8) and it will achieve the same result
+
+
+# for loop end='' to print on same line exercise **********************
+
+# example: 8 --> 36(total sum)(1+2+3+4+5+6+7+8)(for loop with parenthesis)
+
+
+def summation(num):
+    total = num * (num + 1) // 2
+    print(total, '(', end='') # end='' to print on the same line and add a parenthesis
+    for i in range(1, num + 1):
+        if i < num:
+            print(i, end='+') # end='+' to add a plus sign
+        else:
+            print(i, end=')') # end=')' to add a closing parenthesis
+    return total # function should always include a return
+
+
+
