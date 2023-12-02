@@ -1089,4 +1089,53 @@ def summation(num):
     return total # function should always include a return
 
 
+# capitilization of first & last letters only vs using for loop *************************
+# capitalize function
+def abbrev_name(name):
+    full = name.split()
+    first = full[0]
+    last = full[1]
+    first_letter = first[:1].capitalize() # get initial of first name and capitalize it
+    last_letter = last[:1].capitalize() # get initial of last name and capitalize it
+    return f"{first_letter}.{last_letter}"
 
+print(abbrev_name('calvin broadus'))
+
+# for loop example
+def abbrevName(name):
+    return '.'.join(w[0] for w in name.split()).upper()
+    # w will look for the first letter in the name.split().upper() and join a dot. after it
+
+
+# enumrate() list comprehension exercise **********************
+# integers
+string_num = input('enter numbers seperated by space: ') # enter numbers seperated by space
+# string_num_split = string_num.split(), no need for this varible, as my list comprehension will reference it
+# num_list = [] # the new list that will contain the new int values
+
+# traditional method
+'''
+for n in string_num_split:
+    num_list.append(int(n)) # convert each instance into integers, by appending the new list
+'''
+    
+# list comprehension
+num_list = [int(n) for n in string_num.split()] # setting up the new list with the for loop
+
+# now create a threshold to replace any number below this amount
+threshold = 5
+
+
+# this is wrong, [n] is not part of num_list, however, my code is programed as it is
+'''
+for n in num_list:
+    if num_list[n] > threshold:
+        num_list[n] == 0
+print(num_list)
+'''
+
+# use enumrate() to find the index and the elemeant at that specific index
+for index, value in enumerate(num_list):
+    if value > threshold: # if the value (element) is greater than the threshold, replace it with 0 (zero
+        num_list[index] = 0 # replace the value at that index with 0 (zero)
+print(num_list)
