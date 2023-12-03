@@ -1139,3 +1139,24 @@ for index, value in enumerate(num_list):
     if value > threshold: # if the value (element) is greater than the threshold, replace it with 0 (zero
         num_list[index] = 0 # replace the value at that index with 0 (zero)
 print(num_list)
+
+# replacing user input string with char, for loop, replace() exercise **********************
+stringnum = input("Enter numbers: ")
+# stringnum_five = stringnum.__contains__("5") # i can use 5 in method
+
+'''
+if "5" in stringnum: # i can check 5 in stringnum
+    stringnum = stringnum.replace("5", "0")
+    print(stringnum)
+else:
+    print(stringnum)
+'''
+
+for char in stringnum:
+    if char > "5":
+        stringnum = stringnum.replace(char, "1")
+    elif char < "5":
+        stringnum = stringnum.replace(char, "0")
+
+print(stringnum)
+
