@@ -1160,3 +1160,19 @@ for char in stringnum:
 
 print(stringnum)
 
+# use a new string, vs updating the original string with the replace() method for the exercise above
+
+def fake_bin(stringnum):
+    new_string = "" # new_string will be the new string that will be returned
+    for char in stringnum:
+        if char >= "5":
+            new_string += "1"
+        elif char < "5":
+            new_string += "0"
+    return new_string
+
+
+stringnum = input("Enter numbers: ")
+print(fake_bin(stringnum))
+
+
