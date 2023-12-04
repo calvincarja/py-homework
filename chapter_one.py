@@ -1176,3 +1176,56 @@ stringnum = input("Enter numbers: ")
 print(fake_bin(stringnum))
 
 
+# accept INT - convert to string - convert back to int exercise **************
+
+# given an integer input, sqaure each instance of the input
+# no seperators, given integer, return integer
+
+user_num = int(input())
+print(user_num)
+
+# convert int input into a string
+
+user_str = str(user_num)
+print(type(user_str))
+
+# now that its a string, i want to reference each input
+
+for char in user_str: # it will run through each input
+    add = int(char) + 2 # converts stg input back to int with math operator
+    print(add)
+
+# square root example
+
+for char in user_str: # it will run through each input
+    sqaure = round(int(char) ** 0.5) # converts stg input back to int, square roots by raising it to 0.5
+    print(sqaure)
+
+# function example
+
+# below function will ouput the final result in int using it as a string
+
+def square_digits (num):
+    num_stg = str(num)
+    result = "" # this will store each iteration value
+    for char in num_stg:
+        square = round(int(char) ** 0.5)
+        result += str(square) # to store each iteration, but need to turn it back to a str
+    return int(result) # return the final output in integer
+user_num = int(input())
+
+print(square_digits(user_num))
+
+# more efficient method using list
+def square_digits (num):
+    num_stg = str(num)
+    result = [] # turn to list
+    for char in num_stg:
+        square = round(int(char) ** 2)
+        result.append(str(square)) # to store each iteration, but need to turn it back to a str
+    return int(''.join(result)) # return the final output in integer
+
+user_num = int(input())
+
+print(square_digits(user_num))
+
