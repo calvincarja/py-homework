@@ -1229,3 +1229,43 @@ user_num = int(input())
 
 print(square_digits(user_num))
 
+
+
+# list/dict/for loop/any()/dict.value() exercise ***********************
+
+user_input = 'hello'
+input_list = [char for char in user_input] # establish the for loop instance as the list value for each loop
+print(input_list)
+intput_dic = {x: input_list.count(x) for x in input_list} # x is the for loop instance, count(x) refernces how many times x shows up in the list, for x in list is the loop, all inside a dictionary for a key and a value
+# intput_dic.values() returns the values of my dict
+# any() is a boolean that accpets a iterable/list/generator
+if any(x > 2 for x in intput_dic.values()): # asking if boolean if x (foor loop instance) is greater than 2 within my dict value function
+    print('nope')
+else:
+    print('yep')
+
+
+
+
+'''
+for loop used for input_list comprehension
+if i want to print each instance, keep the for loop
+
+for char in user_input:
+    input_list.append(char)
+    print(input_list)
+'''
+
+# function example for above
+def is_isogram(string):
+    lower_string = string.lower() # ignore sensitve cases
+    input_list = [char for char in lower_string] # establish the for loop instance as the list value for each loop
+
+    intput_dic = {x: input_list.count(x) for x in input_list} # x is the for loop instance, count(x) refernces how many times x shows up in the list, for x in list is the loop, all inside a dictionary for a key and a value
+
+    if any(x >= 2 for x in intput_dic.values()): # asking if boolean if x (foor loop instance) is greater than 2 within my dict value function
+        return False
+    else:
+        return True
+
+print(is_isogram('heLlo'))
