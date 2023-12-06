@@ -1319,3 +1319,18 @@ for char in content:
 
 # Print the total character count
 print(char_count)
+
+# open, read, with method file handeling exercise **************
+# simple method
+text = open('/Users/calvinpineda/Downloads/words.txt','r')
+text_content = text.read()
+print(text_content)
+text.close()
+
+# recommended method
+# use with method
+# with method ensures the file is closed once complete
+with open('/Users/calvinpineda/Downloads/words.txt','r') as file:
+    contents = file.read()
+
+print(contents)
