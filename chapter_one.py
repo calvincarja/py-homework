@@ -1291,3 +1291,31 @@ if letter_count == 0:
 
 print(letter_count)
 
+# line vs char for loops new line **************************
+# This loop prints each character in the string
+for char in "Hello, world!":
+    print(char)
+
+# This loop prints each line in the file
+with open("some_file.txt") as file:
+    for line in file:
+        print(line)
+
+
+# want to read a char instead of a line within  a file
+
+# Open the file
+with open("some_file.txt") as file:
+    # Read the entire file into a string
+    content = file.read()
+
+# Initialize a counter
+char_count = 0
+
+# Iterate over each character in the string
+for char in content:
+    # Increment the counter
+    char_count += 1
+
+# Print the total character count
+print(char_count)
