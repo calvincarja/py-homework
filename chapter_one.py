@@ -1269,3 +1269,25 @@ def is_isogram(string):
         return True
 
 print(is_isogram('heLlo'))
+
+
+# more practice on list, & for loops exercise ************************
+
+user_input = 'hello'
+user_input_lower = user_input.lower() 
+user_input_list = [char for char in user_input_lower]
+print(user_input_list)
+letter_list = ['a', 'e', 'i', 'o', 'u']
+letter_count = 0
+print(letter_list)
+
+
+for x in user_input_list:
+    if x in letter_list:
+        letter_count += 1
+
+if letter_count == 0:
+    print('no vowels in the input')
+
+print(letter_count)
+
