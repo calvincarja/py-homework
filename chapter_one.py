@@ -1334,3 +1334,25 @@ with open('/Users/calvinpineda/Downloads/words.txt','r') as file:
     contents = file.read()
 
 print(contents)
+
+
+# scripting/extracting specific value exerise not finished *****************
+
+
+line_num = 0 # used to determine which exact line the text is found
+# target_num = 45
+with open('/Users/calvinpineda/Downloads/mbox-short.txt','r') as file:
+    # contents_find = contents.find('X-DSPAM-Confidence:    0.8475')
+    '''for x in file:
+        line_num += 1
+        if line_num == 45:
+            print(f"Line {line_num}: {x}")
+            break
+    
+    '''
+    for x in file:
+        line_num += 1 # so i can store which line stores the startwith
+        if x.startswith('X-DSPAM-Confidence:'):
+            print(f"Line {line_num}: {x}") # remove break to return every isntance of the startwith line
+    
+
