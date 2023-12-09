@@ -1355,4 +1355,13 @@ with open('/Users/calvinpineda/Downloads/mbox-short.txt','r') as file:
         if x.startswith('X-DSPAM-Confidence:'):
             print(f"Line {line_num}: {x}") # remove break to return every isntance of the startwith line
     
-
+# trying to extract the decimal value
+line_num = 0 # used to determine which exact line the text is found
+line_store = []
+with open('/Users/calvinpineda/Downloads/mbox-short.txt','r') as file:
+    for x in file:
+        line_num += 1 # so i can store which line stores the startwith
+        if x.startswith('X-DSPAM-Confidence:'):
+            line_store = [x.rstrip()]
+            print(f"{x}") # remove break to return every isntance of the startwith line
+            print(line_store)
