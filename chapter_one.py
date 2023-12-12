@@ -1365,3 +1365,21 @@ with open('/Users/calvinpineda/Downloads/mbox-short.txt','r') as file:
             line_store = [x.rstrip()]
             print(f"{x}") # remove break to return every isntance of the startwith line
             print(line_store)
+
+# correct answer for above
+
+
+# line_store = []
+line_sum = []
+with open('/Users/calvinpineda/Downloads/mbox-short.txt','r') as file:
+    for x in file:
+        if x.startswith('X-DSPAM-Confidence:'):
+            non_space = x.strip()
+            line_split = non_space.split(':')
+            # line_store = [float(line_split[1])] # after append, this becomes redudundent
+            # line_sum += line_store # I am extending the list via +=, rather, i can store the number itself in the line_sum list
+            line_sum.append(float(line_split[1]))
+            print(float(line_split[1]))
+line_cal = sum(line_sum)/len(line_sum)
+print(line_cal)
+    
