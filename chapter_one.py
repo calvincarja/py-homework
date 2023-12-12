@@ -1413,5 +1413,14 @@ with open('/Users/calvinpineda/Downloads/romeo.txt','r') as file:
                 line_store.append(z) # if not present, add it to single list
 print(line_store)
 
+# using a set() for the exercise above
+# use a set, as a set can be added an element, but it cannot change. 
+line_store = set()
+with open('/Users/calvinpineda/Downloads/romeo.txt','r') as file:
+    for x in file:
+        split_line = x.split() # checking each word
+        for z in split_line:
+            line_store.add(z) # if its not present, it will be added. if its, nothing will change
+print(list(line_store))
 
     
