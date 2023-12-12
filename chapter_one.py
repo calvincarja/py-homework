@@ -1398,4 +1398,20 @@ with open('/Users/calvinpineda/Downloads/mbox-short.txt','r') as file:
 line_cal = line_total/line_count
 print('Average spam confidence: ',line_cal)
 
+
+
+# split words and checking if already exist exervise ******************
+
+line_store = []
+with open('/Users/calvinpineda/Downloads/romeo.txt','r') as file:
+    for x in file:
+        split_line = x.split() # checking each word
+        for z in split_line:
+            if z in line_store:
+                continue
+            else:
+                line_store.append(z) # if not present, add it to single list
+print(line_store)
+
+
     
