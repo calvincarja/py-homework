@@ -1423,4 +1423,15 @@ with open('/Users/calvinpineda/Downloads/romeo.txt','r') as file:
             line_store.add(z) # if its not present, it will be added. if its, nothing will change
 print(list(line_store))
 
-    
+# extracting data from line exercise ***********************************
+
+x_count = 0
+with open('/Users/calvinpineda/Downloads/mbox-short.txt','r') as file:
+    for x in file:
+        if x.startswith('From:'):
+            x_list = x.split()
+            x_count += 1
+            print(x_list[1])
+    print(x_count)
+
+
