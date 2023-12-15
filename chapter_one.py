@@ -1449,3 +1449,14 @@ for x in user_list:
         user_list_num.append(x)
 
 print(user_list_num)
+
+# now assume the input is a list, no string
+
+def filter_list(l): # assume the input is a list
+    user_num_list = [] # store the desired integers
+    for x in l:
+        if isinstance(x, int): # isintance() function that checks if object matches the desired classinfo
+            user_num_list.append(x)
+    return user_num_list
+
+print(filter_list([1,2,'a',123,'bc']))
