@@ -1460,3 +1460,31 @@ def filter_list(l): # assume the input is a list
     return user_num_list
 
 print(filter_list([1,2,'a',123,'bc']))
+
+# list comprehension example for above
+
+user_num_list = [x for x in l if is_isogram(x,int)]
+
+
+# use dictionary to count the amount of times something repeats
+
+names = 'calvin,tim,alex,calvin,tim,bob,jones,jones,taylor'
+names_split = names.split(',') # my list
+names_set = set()
+
+'''
+for x in names_split: # this set() stores unique values
+    names_set.add(x)
+'''
+name_dict = dict()
+
+for name in names_split:
+    if name in name_dict:
+        name_dict[name] += 1 # store the count amount
+    else:
+        name_dict[name] = 1 # adds it to the dic if not present
+
+print(name_dict)
+
+
+# to recap - to count amount of times an item displays - just use a list with DICT
