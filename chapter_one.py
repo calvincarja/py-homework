@@ -1488,3 +1488,12 @@ print(name_dict)
 
 
 # to recap - to count amount of times an item displays - just use a list with DICT
+
+# can replace if statement with get() method
+
+name_dict = dict()
+
+for name in names_split:
+    name_dict[name] = name_dict.get(name, 0) + 1
+
+print(name_dict)
