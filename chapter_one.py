@@ -1435,3 +1435,17 @@ with open('/Users/calvinpineda/Downloads/mbox-short.txt','r') as file:
     print(x_count)
 
 
+# converting input into list - list(input()) vs [input()]
+
+
+# user_list = [input()] this gets the entire input as one string and puts it into a list
+user_list = list(input()) # gets input and seperates into a list
+
+user_list_num = []
+
+for x in user_list:
+    user_check = x.isdigit()
+    if user_check == True:
+        user_list_num.append(x)
+
+print(user_list_num)
