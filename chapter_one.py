@@ -1,40 +1,3 @@
-
-# FINDING THE MOST MENTIONED WORD **************
-
-# varibale
-hello = "hello world"
-print("%s" % hello)
-
-# list example
-# Creating a list of integers
-numbers = [1, 2, 3, 4, 5]
-
-# Accessing elements
-first_number = numbers[0]  # Access the first element
-second_number = numbers[1] # Access the second element
-
-print("First number:", first_number)
-print("Second number:", second_number)
-
-# Modifying an element
-numbers[2] = 10  # Changing the third element from 3 to 10
-print("Modified list:", numbers)
-
-# Adding a new element
-numbers.append(6) # Adding a new element at the end
-print("List after adding a new element:", numbers)
-
-# function example - the varibles are the parameters
-def add_numbers(number1, number2):
-    result = number1 + number2
-    return result
-
-
-
-# module
-from mdlu import greet 
-greet("calvin")
-
 # import counter to read words in sentence
 
 from collections import Counter
@@ -87,7 +50,7 @@ getsteps(3)
 print(position['x'], position['y'])
 
 
-# COUNTING THE USER INPUT **************
+# COUNTING THE USER INPUT EXERCISE **************
 
 
 # cound the numbers of words inputed by the user
@@ -157,7 +120,7 @@ textcount = text.count(' ') + 1
 print(textcount)
 
 
-# CALCULATION USER INPUT ***********************
+# CALCULATION USER INPUT EXERCISE ***********************
 
 # ask the user to input one number, validate its actaully a number
 # sucess
@@ -272,7 +235,7 @@ result = mult_or_sum()
 print('the result is', result)
 
 
-# print the sum of the current number and the previous number ****************
+# print the sum of the current number and the previous number EXERCISE ****************
 # turn the input number into the range
 print('input a number below')
 numuser = input()
@@ -287,7 +250,7 @@ for n in numrange:
     currentprev = n
 
 
-# learning python exercises #2 -- calculate volumn of cone *************************
+# learning python exercises #2 -- calculate volumn of cone  EXERCISE *************************
 # h & r is a number between 1 and 100. both are user input
 # formula for volumn of cone (3.14*r^2*h)/3
 # code the user input with the restrains
@@ -319,7 +282,7 @@ h = numtwo
 volume = (3.14* r**2 * h)/3
 print('your voulmn of your right cone is ', volume)
 
-# numerical value determines the amount of o's in the string *************************
+# numerical value determines the amount of o's in the string EXERCISE *************************
 # the value of s = the amount of o's in the string
 print('enter a value for the amount of o\'s in the string')
 spooky = int(input())
@@ -386,7 +349,7 @@ formatted_poem = '\n'.join(poem_lines)
 print(formatted_poem)
 
 
-# function to output the multiple of two numbers ******************
+# function to output the multiple of two numbers EXERCISE ******************
 def countbynum (number1, number2):
     countlist = [] # empty list
     for n in range(1, number2 + 1): # range starts at 1, ends at number2 + 1
@@ -403,7 +366,7 @@ print(countbynum(2, 5))
 
 
 
-# new list is created with random letters from the list of letters **************
+# new list is created with random letters from the list of letters EXERCISE **************
 
 import random
 letters = ['G', 'C', 'A', 'T'] # list of letters
@@ -443,7 +406,7 @@ rna_sequence = dna_to_rna(dna_sequence)  # RNA sequence
 print(f'"{dna_sequence}" => "{rna_sequence}"')
 
 
-# two functions calculation for varible values ******************
+# two functions calculation for varible values EXERCISE ******************
 numyoung = 0
 nummiddle = 0
 
@@ -500,7 +463,7 @@ def str_to_int(word): # codewars gives me an error b/c they want a specific name
     return int(word) # its good practice to retrun the value instead of printing it
 str_to_int("1234")
 
-# function to return string based on value ******************
+# function to return string based on value EXERCISE ******************
 def bmi (weight, height):
     bmi =  weight / height ** 2
     if bmi <= 18.5:
@@ -514,7 +477,7 @@ def bmi (weight, height):
     
 print(bmi(80, 1.8))
 
-# function for liters per hour ******************
+# function for liters per hour EXERCISE ******************
 import math
 water = 0.5 #liters per hour
 
@@ -529,7 +492,7 @@ print(litres(3))
 def litres(time):
     return time // 2
 
-# calculate rate of pay with overtime ******************
+# calculate rate of pay with overtime EXERCISE ******************
 hourstrng = input()
 hoursint = float(hourstrng)
 ratestrng = input()
@@ -558,7 +521,7 @@ else:
     print('F')
 
 
-# library to solve for an equation ******************
+# library to solve for an equation EXERCISE ******************
 from sympy import symbols, Eq, solve
 
 # Define the symbol
@@ -586,7 +549,7 @@ fahrenheit_value = int(solve(equation, fahrenheit)[0]) # removes the decimals fr
 
 print(fahrenheit_value)
 
-# passing a user input to a function ******************
+# passing a user input to a function EXERCISE ******************
 def add_numbers(a, b):
     # Perform some calculation with the arguments
     return a + b
@@ -615,7 +578,7 @@ p = computepay(hrsint,rateint)
 print(p)
 
 
-# function with while loop and list ******************
+# function with while loop and list EXERCISE ******************
 userlist = [] # empty list, intialize before the loop
 largest = None
 smallest = None
@@ -636,7 +599,7 @@ smallest = min(userlist)
 print("Maximum is", largest)
 print("Minimum is", smallest)
 
-# function to determine baskeball winner, global vs local varible ******************
+# function to determine baskeball winner, global vs local varible EXERCISE ******************
 # why my version didnt work
 '''The issue you're encountering is due to the scope of the variables atotal and btotal. 
 The atotal inside the function apple_score is a local variable, meaning it only exists within the function's scope. 
@@ -683,7 +646,7 @@ banna_score = calculate_score(8, 9, 6)
 
 # multiple if statements are treated independently, else if statements are treated as one
 
-# if statement with multiple conditions ******************
+# if statement with multiple conditions EXERCISE ******************
 # my code below
 print('Enter a 4 digit phone number, seperated by (-):')
 phone = input()
@@ -741,7 +704,7 @@ while True:
         print("Invalid input. Please ensure you enter numbers.") # print an error message and continue the loop
     
 
-# multiple functions and summing them ******************
+# multiple functions and summing them EXERCISE ******************
 def burger_choice(choice):
     if choice == 1: # cheeseburger
         return 461
@@ -785,7 +748,7 @@ def dessert_choice(choice):
 total_calories = burger_choice(int(input())) + side_choice(int(input())) + drink_choice(int(input())) + dessert_choice(int(input()))
 print("Your total Calorie count is " + str(total_calories) + ".")
 
-# date function, user input function, and if statement ******************
+# date function, user input function, and if statement EXERCISE ******************
 # lets import datetime
 import datetime
 
@@ -821,7 +784,7 @@ elif user_date > feb_date:
 else:
     print('Before') 
 
-# counter and reference spefic key in dictionary ******************
+# counter and reference spefic key in dictionary EXERCISE ******************
 from collections import Counter
 
 # i need an input to store the sentence
@@ -846,7 +809,7 @@ elif amount[happy] < amount[sad]:
 else:
     print("unsure")
 
-# sort user input, for statement, strip, split & isdigit ******************
+# sort user input, for statement, strip, split & isdigit EXERCISE ******************
 
 num = input("Enter numbers seperated by commas: ")
 order = input("Enter asc or desc: ")
@@ -1291,7 +1254,7 @@ if letter_count == 0:
 
 print(letter_count)
 
-# line vs char for loops new line **************************
+# line vs char for loops new line EXERCISE **************************
 # This loop prints each character in the string
 for char in "Hello, world!":
     print(char)
@@ -1336,7 +1299,7 @@ with open('/Users/calvinpineda/Downloads/words.txt','r') as file:
 print(contents)
 
 
-# scripting/extracting specific value exerise not finished *****************
+# scripting/extracting specific value exerise not finished EXERCISE *****************
 
 
 line_num = 0 # used to determine which exact line the text is found
