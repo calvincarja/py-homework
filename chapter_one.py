@@ -1497,3 +1497,29 @@ for name in names_split:
     name_dict[name] = name_dict.get(name, 0) + 1
 
 print(name_dict)
+
+# reversing integer input exercise *********************
+
+# multiple integers saved into a list
+
+user_input = [2,3,34,345,1,2]
+user_input.sort() # call the sort function. the list is now sorted. 
+print(user_input) # print the updated list
+
+
+# single integers seperated into a list
+# this method works when the output can be a list
+
+user_input = 123594837 # single line of integers
+user_num_list = [int(x) for x in str(user_input)] # str(user_input) turns int into string, then for loop turns it back to integer
+user_num_list.sort()
+print(type(user_num_list))
+
+# function example for kata
+# output needs to be integers
+
+def descinding_order (num):
+    user_num_list = [str(x) for x in str(num)] # keep in string format
+    user_num_list.sort(reverse=True) # reverse the string list
+    sorted_num_str = ''.join(user_num_list) # turn the list into a string
+    return int(sorted_num_str) # turn string into integer
