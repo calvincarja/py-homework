@@ -1486,3 +1486,57 @@ def descinding_order (num):
     user_num_list.sort(reverse=True) # reverse the string list
     sorted_num_str = ''.join(user_num_list) # turn the list into a string
     return int(sorted_num_str) # turn string into integer
+
+
+# use a txt file to find the store email senders & return sender with highest amount exercise *************
+''' -- the second for loop is not necessary, however, 
+        if wanted to keep - the x_split[1] needs to ne wrapped another list
+email = {}
+with open('/Users/calvinpineda/Downloads/mbox-short.txt','r') as file:
+    for x in file:
+        if x.startswith('From:'):
+            non_space = x.strip()
+            x_split = non_space.split(':')
+            for y in [x_split[1]]: # list wrapped around split list so it can keep only the emails
+                email[y] = email.get(y,0) + 1
+print(email)
+# print(email.items()) # items() is useful with FOR LOOPS        
+'''
+
+email = {}
+with open('/Users/calvinpineda/Downloads/mbox-short.txt','r') as file:
+    for x in file:
+        if x.startswith('From:'):
+            # non_space = x.strip() # dictionary is stripping, so not necessary
+            x_split = x.split(':') # create new list seperating from with the email part
+            email[x_split[1].strip()] = email.get(x_split[1].strip(),0) + 1
+            # email[x_split[1].strip()] is telling python that the dictionary email, will now have a key
+            # key of x_split[1] (is the email part of the split list)
+            # = email.get(x_split[1].strip(),0) + 1 is assigning ASSIGNING the value of the key with the get method
+            # since its being assigned, it will now be stored in the dictionary
+            # and the counter will increase by 1
+
+# cleaned up version
+            
+email = {}
+with open('/Users/calvinpineda/Downloads/mbox-short.txt','r') as file:
+    for x in file:
+        if x.startswith('From:'):
+            x_split = x.split(':')
+            email[x_split[1].strip()] = email.get(x_split[1].strip(),0) + 1 # the for loop stores each value into the dictoinary that satisfy the if statement
+
+# acquire max function for dictionary
+# use lambda function
+max(email, lambda a,b: b) # my version
+# correct version
+max(email.items(), keys=lambda kv: kv[1]) 
+# items() returns keys/values pairs in dictionary
+    # keys=lambda kv: kv[1] creating a lambda function, passing a tuple of a keyvalue
+        # and returning the value [1] from the tuple (collection of ordered elements), in this case, the key/value pair
+# kv is just a varible, it could have been any varible i chose
+
+# store in varible
+max_pair = max(email.items(), key=lambda kv: kv[1])
+
+print(max_pair)
+
