@@ -1540,3 +1540,8 @@ max_pair = max(email.items(), key=lambda kv: kv[1])
 
 print(max_pair)
 
+# print the max_pair in string format, not tuple format
+# learned about format() 
+print('{} {}'.format(max_pair[0], max_pair[1]))
+# format() replaces the {} within the print quotes
+
