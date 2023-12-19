@@ -1544,4 +1544,103 @@ print(max_pair)
 # learned about format() 
 print('{} {}'.format(max_pair[0], max_pair[1]))
 # format() replaces the {} within the print quotes
+# max_pairs[] are tuples, so i can refernce their position
 
+
+# mini cup ball PROJECT exercise ***********************************
+
+# three positions: 1, 2, 3
+# three moves: A, B, C
+# initial position is always 1 
+# Moves combination:
+    # A swap between 1 & 2
+    # b swap between 2 & 3
+    # c swap between 1 & 3
+# example movement: AB
+    # A swaps the ball from 1 to 2
+    # next move, B, swaps the ball from 2(current pos) to 3 (final position)
+
+# the only input from user is movement
+# how can i move the position of the ball? start by 1. 
+
+
+ball = [1, 0, 0] # this represent the current position of the ball - ball always starts at 1
+# print(ball.index(1))
+
+
+# as the ball moves, the integer of the ball list updates. 
+
+# the input of ABC, will update the list value
+
+# user input 'A' - code will turn ball[0] = 0, ball[1] = 1/ print current poisition 
+# index() function returns the index value where the given element - can be used for current poisition
+
+# lets hard code everything first
+
+# my version but i am stuck
+
+def movement (m): # logic of moving the ball
+    if ball.index(1) == 0:
+        if m == 'A':
+            ball[0] = 0
+            ball[1] = 1
+        elif m == 'C':
+            ball[0] = 0
+            ball[2] = 1 
+        else:
+            return ball.index(1)
+    elif ball.index(1) == 1:
+        if m == 'B':
+            ball[1] = 0
+            ball[2] = 1
+        else:
+            return ball.index(1)
+    elif ball.index(1) == 2:
+        if m == 'C':
+            ball[2] = 0
+            ball[0] = 1
+        else:
+            return ball.index(1)
+
+def game(moves): # accepting the user input
+    for m in moves:
+        movement(m)
+        return ball.index(1)
+
+print(game('AB'))
+
+
+# ANSWER TO THE PROBLEM
+
+# Initialize the ball positions
+ball = [1, 0, 0]
+
+def swap_positions(pos1, pos2): # 3rd
+    # Swap the values at pos1 and pos2 in the ball list
+    temp = ball[pos1] # temp = 0
+    ball[pos1] = ball[pos2] # ball[pos1] = 1 since ball[pos2] = 1 which is ball[1] = 1
+    ball[pos2] = temp # temp = 1
+
+def movement(m): #2nd 
+    # Define the moves
+    moves = {'A': (0, 1), 'B': (1, 2), 'C': (0, 2)}
+    
+    # Check if the move is valid
+    if m in moves: # 2nd piece of code executed
+        # Get the positions to swap
+        pos1, pos2 = moves[m] 
+        
+        # Only perform the swap if the ball is at one of these positions
+        if ball[pos1] == 1 or ball[pos2] == 1: # ensure the current ball position is within the letter tuple value
+            swap_positions(pos1, pos2)
+
+def game(moves): #1st
+    # Perform each move
+
+    for m in moves:
+        movement(m) # this is the first excuted peice of code
+    
+    # Return the final position of the ball
+    return ball.index(1) + 1  # Add 1 because positions are 1-based
+
+print(game('AB'))
