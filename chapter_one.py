@@ -1664,3 +1664,130 @@ def game(moves):
     return ball
 
 print(game('AB'))
+
+# while loops, zip, set, issubset exercise ********************************
+
+
+# my initial version
+'''
+yest_list = []
+today_list = []
+
+while True:
+    try:
+        spaces = int(input('amount of parking spaces: '))
+        break
+    except:
+        input('not a number')
+
+yest_spaces = input('enter yesterday parking data: ') # 'C' or '.' where C is parked, '.' is empty
+
+while True:
+    try:
+        len(yest_spaces) == spaces
+        break
+    except:
+         input('try again')        
+            
+            
+for x in yest_spaces:
+    yest_list.append(x)
+
+today_spaces = input('enter todays parking data: ') # 'C' or '.' where C is parked, '.' is empty
+
+while True:
+        try:        
+            len(today_spaces) == spaces
+            break
+        except:
+            input('try again')
+
+
+for y in today_spaces:
+    today_list.append(y)
+
+# not needed, today_split_list = [w.split('C') for w in today_list]            
+            
+# OUTPUT: where yest_list[c] == today_list[c]
+    # 
+counter = 0
+for z,h in zip(yest_list, today_list): # zip is used when want to iterate over mutlple sequences (list, strings)
+    if z == 'C' and h == 'C':
+        counter += 1
+
+
+print(counter)
+'''
+
+'''
+# my versions with improvements:
+    # just use two while loops
+
+
+yest_list = []
+today_list = []
+
+while True:
+    try:
+        spaces = int(input('amount of parking spaces: '))
+        break
+    except:
+        input('not a number')
+
+yest_spaces = input('enter yesterday parking data: ') # 'C' or '.' where C is parked, '.' is empty
+while yest_spaces != spaces: # while this is correct, it will repeat
+    print('invalid input, try again')
+    yest_spaces = input('enter yesterday parking data: ') # 'C' or '.' where C is parked, '.' is empty
+
+today_spaces = input('enter todays parking data: ') # 'C' or '.' where C is parked, '.' is empty
+while yest_spaces != spaces: # while this is correct, it will repeat
+    print('invalid input, try again')
+    today_spaces = input('enter todays parking data: ') # 'C' or '.' where C is parked, '.' is empty
+
+for x in yest_spaces:
+    yest_list.append(x)
+
+for y in today_spaces:
+    today_list.append(y)
+
+counter = 0
+for z,h in zip(yest_list, today_list): # zip is used when want to iterate over mutlple sequences (list, strings)
+    if z == 'C' and h == 'C':
+        counter += 1
+
+
+print(counter)
+'''
+
+
+# more efficient code
+    # no need for list, when zip can run through the strings
+    # check if the string only contains 'C' and/or '.'
+
+while True:
+    try:
+        spaces = int(input('amount of parking spaces: '))
+        break
+    except:
+        input('not a number')
+
+yest_spaces = input('enter yesterday parking data: ') # 'C' or '.' where C is parked, '.' is empty
+yest_spaces_upper = yest_spaces.upper()
+while len(yest_spaces_upper) != spaces or not set(yest_spaces_upper).issubset({'C', '.'}): # while this is correct, it will repeat - for set, look at chat history
+    print('invalid input, try again')
+    yest_spaces = input('enter yesterday parking data: ') # 'C' or '.' where C is parked, '.' is empty
+
+today_spaces = input('enter todays parking data: ') # 'C' or '.' where C is parked, '.' is empty
+today_spaces_upper = today_spaces.upper()
+while len(today_spaces_upper) != spaces or not set(today_spaces_upper).issubset({'C', '.'}): # while this is correct, it will repeat
+    print('invalid input, try again')
+    today_spaces = input('enter todays parking data: ') # 'C' or '.' where C is parked, '.' is empty
+
+
+counter = 0
+for z,h in zip(yest_spaces, today_spaces): # zip is used when want to iterate over mutlple sequences (list, strings)
+    if z == 'C' and h == 'C':
+        counter += 1
+
+
+print(counter)
