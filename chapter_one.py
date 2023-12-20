@@ -1813,4 +1813,55 @@ list_words.sort(reverse=True)
 print('{} {}'.format(list_words[0], list_words[1]))
 
 
+# using a list comprehension
 
+# given common_words{}
+print(sorted([(w,v) for v,w in common_words.items()], reverse=True))
+
+
+# turn string to integer, max/min, test cases
+
+'''high_and_low("1 2 3 4 5")  # return "5 1"
+'''
+
+# my initial version
+
+# the input given is strings seperated by a space
+
+# create a split list - sort, by largest, use format print
+
+def high_and_low(num):
+    str_num = str(num)
+    str_num_split = str_num.split()
+    num_list = [int(x) for x in str_num_split] # convert strings to numbers - need to split it first
+    num_list.sort(reverse=True)
+    high_num = num_list[0]
+    num_list.sort(reverse=False)
+    low_num = num_list[0]
+    result = f"{high_num} {low_num}"
+    return result
+
+def test_high_and_low():
+    assert high_and_low("4 5 29 54 4 0 -214 542 -64 1 -3 6 -6") == "542 -214"
+    assert high_and_low("1 -1") == "1 -1"
+    assert high_and_low("1 1") == "1 1"
+    assert high_and_low("-1 -1") == "-1 -1"
+    assert high_and_low("1 -1 0") == "1 -1"
+    assert high_and_low("1 1 0") == "1 0"
+    assert high_and_low("-1 -1 0") == "0 -1"
+    assert high_and_low("42") == "42 42"
+
+test_high_and_low()
+
+# improved version
+# dont sort, just use max/min to find highest number/lowest
+# no need to turn to integer
+
+def high_and_low(number):
+    number_list = number.split()
+    high_number = max(number_list, key=int) # converts the list to integer, before finding the max number
+    low_number = min(number_list, key=int)
+    return f"{high_number} {low_number}"
+
+# string input was given, turn it to an integer because i need to find the high/low
+# negative numbers need to be converted to integer so they can be properly assigned a low 
