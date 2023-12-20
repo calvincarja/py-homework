@@ -1610,7 +1610,7 @@ def game(moves): # accepting the user input
 print(game('AB'))
 
 
-# ANSWER TO THE PROBLEM
+# ANSWER IF WANTED TO KNOW THE INTERIM POSITION
 
 # Initialize the ball positions
 ball = [1, 0, 0]
@@ -1642,5 +1642,25 @@ def game(moves): #1st
     
     # Return the final position of the ball
     return ball.index(1) + 1  # Add 1 because positions are 1-based
+
+print(game('AB'))
+
+# IF ONLY INTERESTED IN FINAL POSITION (ORIGINAL ASK)
+
+def game(moves):
+    # Initialize the ball position
+    ball = 1
+
+    # Define the moves
+    moves = {'A': (1, 2), 'B': (2, 3), 'C': (1, 3)}
+
+    # Perform each move
+    for m in moves:
+        if m in moves and ball in moves[m]:
+            # Update the ball position
+            ball = sum(moves[m]) - ball # clever way to find current position of ball
+
+    # Return the final position of the ball
+    return ball
 
 print(game('AB'))
