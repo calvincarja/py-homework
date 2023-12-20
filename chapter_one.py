@@ -1647,7 +1647,7 @@ print(game('AB'))
 
 # IF ONLY INTERESTED IN FINAL POSITION (ORIGINAL ASK)
 
-def game(moves):
+def game(input_moves):
     # Initialize the ball position
     ball = 1
 
@@ -1655,7 +1655,7 @@ def game(moves):
     moves = {'A': (1, 2), 'B': (2, 3), 'C': (1, 3)}
 
     # Perform each move
-    for m in moves:
+    for m in input_moves:
         if m in moves and ball in moves[m]:
             # Update the ball position
             ball = sum(moves[m]) - ball # clever way to find current position of ball
@@ -1791,3 +1791,26 @@ for z,h in zip(yest_spaces, today_spaces): # zip is used when want to iterate ov
 
 
 print(counter)
+
+
+# finding 2 most common words / tuple, for lopo, items(), sorted exercise *************
+
+# find 2 most common words with romeo txt
+
+common_words = {} # dictionary will store n words and the amount of times they show up
+list_words = []
+with open('/Users/calvinpineda/Downloads/romeo.txt','r') as file:
+    for x in file:
+        split_words = x.split()
+        for y in split_words:
+            common_words[y] = common_words.get(y,0) + 1
+
+# items() is key to getting my desired n common words
+for v,w in common_words.items(): # v = key, w = value
+    list_words.append((w,v)) # make the value first place, so we can sort by value, paranethesis as its tuple
+
+list_words.sort(reverse=True)
+print('{} {}'.format(list_words[0], list_words[1]))
+
+
+
