@@ -1865,3 +1865,19 @@ def high_and_low(number):
 
 # string input was given, turn it to an integer because i need to find the high/low
 # negative numbers need to be converted to integer so they can be properly assigned a low 
+
+
+# find specific text, count, dictionary, items(), sorted exercise ***********************
+
+time_dict = {}
+with open('/Users/calvinpineda/Downloads/mbox-short.txt','r') as file:
+    for x in file:
+        if x.startswith('From '):
+            words = x.split()
+            for word in words:
+                if ':' in word: # finding time stamp
+                    timestamp = word # storing time stamp by each line
+                    time_dict[timestamp[0:2]] = time_dict.get(timestamp[0:2],0) + 1 # storing the first two digit
+
+for hour, dist in sorted(time_dict.items()):
+    print(f"{hour} {dist}")
