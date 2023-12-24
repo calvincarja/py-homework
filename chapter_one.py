@@ -1881,3 +1881,34 @@ with open('/Users/calvinpineda/Downloads/mbox-short.txt','r') as file:
 
 for hour, dist in sorted(time_dict.items()):
     print(f"{hour} {dist}")
+
+
+
+# cipher project pt 1 exercise **********************
+    
+
+# create dictionary that key represents a letter, and value switches the key (complete)
+
+# {'09': 2, '18': 1, '16': 4, '15': 2, '14': 1, '11': 6, '10': 3, '07': 1, '06': 1, '04': 3, '19': 1, '17': 2}
+
+cipher = {
+    'A': 'N', 'B': 'O', 'C': 'P', 'D': 'Q', 'E': 'R',
+    'F': 'S', 'G': 'T', 'H': 'U', 'I': 'V', 'J': 'W',
+    'K': 'X', 'L': 'Y', 'M': 'Z', 'N': 'A', 'O': 'B',
+    'P': 'C', 'Q': 'D', 'R': 'E', 'S': 'F', 'T': 'G',
+    'U': 'H', 'V': 'I', 'W': 'J', 'X': 'K', 'Y': 'L',
+    'Z': 'M'
+}
+
+# user input function
+# lets assume no spaces, come back to it later
+
+def machine (word):
+    case = word.upper() # turn word upper caps
+    switch_word = '' # string that will display new letter combination
+    for char in case:
+        # switch_word = ''.join(cipher[char]) -- store the value in cipher to string - cipher is already string, thus, can just use +=
+        switch_word += cipher[char]
+    return switch_word
+
+print(machine('hello'))
