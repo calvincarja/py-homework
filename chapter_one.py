@@ -1912,3 +1912,43 @@ def machine (word):
     return switch_word
 
 print(machine('hello'))
+
+# now a version if it contains a space
+
+
+# create dictionary that key represents a letter, and value switches the key (complete)
+
+# {'09': 2, '18': 1, '16': 4, '15': 2, '14': 1, '11': 6, '10': 3, '07': 1, '06': 1, '04': 3, '19': 1, '17': 2}
+
+cipher = {
+    'A': 'N', 'B': 'O', 'C': 'P', 'D': 'Q', 'E': 'R',
+    'F': 'S', 'G': 'T', 'H': 'U', 'I': 'V', 'J': 'W',
+    'K': 'X', 'L': 'Y', 'M': 'Z', 'N': 'A', 'O': 'B',
+    'P': 'C', 'Q': 'D', 'R': 'E', 'S': 'F', 'T': 'G',
+    'U': 'H', 'V': 'I', 'W': 'J', 'X': 'K', 'Y': 'L',
+    'Z': 'M'
+}
+
+# user input function
+# lets assume no spaces, come back to it later
+# now that it workds, lets handle spaces, keep the space
+
+def machine (word):
+    case = word.upper() # turn word upper caps
+    split_space = case.split() # this will handle the spaces of the input
+    switch_word = '' # string that will display new letter combination
+    if len(split_space) > 1: # if input contains multiple words
+        for x in split_space: # for loop runs through the list
+           switch_word += ' ' # adds a space between the words, not letters
+           for y in x: # for loop runs through the letter of each word
+           # for y in split_space[x]: incorrect, x, is not an index of split_space list, instead , just use X 
+                # switch_word += cipher[y] # add the new arrangement of letters to variable, however, what happens if charcter not in dict?
+               switch_word += cipher.get(y,y) # the second y will return y if y not in dictionary
+        return switch_word.strip() # all words are added to the varible, and it removes the spaces, before/after
+    else:                   
+        for char in case:
+            switch_word += cipher[char]
+        return switch_word
+
+print(machine('hello calvin'))
+
