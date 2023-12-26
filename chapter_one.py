@@ -2095,3 +2095,50 @@ for x in range(1, time + 1): # so there is no month that starts with 0
     balance = (balance - expenses + deposit) * (1 + monthly_apy) # its my running total
 
 print(balance)
+
+# advance print formats for above
+
+while True:
+    try:
+        balance = int(input('Enter savings balance: '))
+        time = int(input('Enter timeframe: '))
+        break
+    except:
+        print('Not a number. Only numbers please')
+
+savings_apy = float(0.1) # this is yearly, since N = months, I need to find monthly
+monthly_apy = savings_apy / 12 # monthly savings apy
+initial_balance = balance
+
+# within the time, frame, deposit and expense change
+        # thus, the input is asked within the for loop
+
+monthly_list = []
+for x in range(1, time + 1): # so there is no month that starts with 0
+    expenses = int(input('Enter expenses for this month: '))
+    deposit = int(input('Enter deposit for this month: '))
+    monthly_list.append((expenses, deposit))
+    balance = (balance - expenses + deposit) * (1 + monthly_apy) # its my running total
+
+
+print(
+   f"initial balance: ${initial_balance}\n" 
+   f"monthly interest rate: {monthly_apy*100}% \n"
+   f"number of months: {time}\n"
+   f"monthly transactions: {monthly_list}\n"
+   f"total balance after {time} months: ${round(balance)}\n"
+   )
+
+# revised code: initial balance is lost due to me re-initalizing it in the code
+# create a stored balance varible 
+# for clarity, below is equivilent to my one line of code for a running total
+# for financial problems, be careful rounding
+
+
+for x in range(1, time + 1): # so there is no month that starts with 0
+    expenses = int(input('Enter expenses for this month: '))
+    deposit = int(input('Enter deposit for this month: '))
+    monthly_list.append((expenses, deposit))
+    balance += deposit
+    balance -= expenses
+    balance *= (1 + monthly_apy)
