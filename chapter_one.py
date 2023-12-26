@@ -1952,3 +1952,72 @@ def machine (word):
 
 print(machine('hello calvin'))
 
+
+# advance revised code for exercise above
+
+def machine(word):
+    case = word.upper()  # turn word upper caps
+    switch_word = ''  # string that will display new letter combination
+    
+    for char in case:  # for loop runs through each character
+        if char != ' ':  # check if the character is not a space, in other words, is a letter?
+            switch_word += cipher.get(char, char)  # get the cipher character, or the character itself if it's not in the dictionary
+        else: # if char is a space
+            switch_word += char  # just add the space to the switch_word
+    
+    return switch_word
+
+
+# rollver month data amount exercise ************
+
+# validate each input for data & time is an integer
+
+while True:
+    try:
+        data = int(input('Enter data plan: '))
+        time = int(input('Enter previous time frame: '))
+        break
+    except:
+        print('Not a number. Only numbers please')
+
+# The below approach is incorrect, there is no need to store the values
+        # the question is just interested in the remaining amount of data, for N + 1
+        # the question is not interested in seeing the values for each iteration
+'''
+usage_dict = {}
+for x in range(0,time):
+    usage = int(input(f'Enter amount for month {x}: ')) # amount cannot exceed X, think about later
+    usage_dict[x] = usage # this stores the value of usage to the dictionary, this is the first month
+    if time - usage != 0:
+        remainder = time - usage
+        usage_dict[x] = usage + remainder
+'''
+
+# my version below was incorrect b/c I was not storing rollver correcly. 
+'''
+
+rollover = 0 # this will store the remaining amount
+for x in range(0, time): # the plus one, represents the future value, the N + 1
+    rollover = rollover + data
+    user_input = int(input(f'Enter amount for month {x}: '))
+    usage = data - user_input # calculates amount used from data plan
+    rollover = data + usage # stores remaining amount
+
+print(rollover)
+
+'''
+# correct version
+
+data = int(input('Enter data plan: '))  # Monthly data allowance
+time = int(input('Enter previous time frame: '))  # Number of months of data usage provided
+rollover = 0  # Initialize the rollover data
+
+for x in range(1, time + 1):  # Start range at 1 to match the month numbers
+    user_input = int(input(f'Enter amount for month {x}: '))  # Data used in month x
+    rollover = rollover + data - user_input  # Calculate rollover for the next month
+
+# After the loop, rollover contains the unused data that rolls over to month N+1.
+# Add the monthly data allowance to the rollover to get the total data for the N+1 month.
+next_month_data = rollover + data
+
+print(next_month_data)
