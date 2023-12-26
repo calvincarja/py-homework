@@ -2021,3 +2021,77 @@ for x in range(1, time + 1):  # Start range at 1 to match the month numbers
 next_month_data = rollover + data
 
 print(next_month_data)
+
+
+# similar problem, for running total exercise **************
+
+'''
+Exercise: Savings Account Balance
+Background:
+Imagine that you have a savings account that accrues interest at the end of each month. The interest is a percentage of the amount of money you have in the account at the end of the month.
+
+Task:
+Write a program that calculates the total balance of your savings account after a certain number of months, taking into account monthly deposits, monthly expenses, and interest.
+
+'''
+
+# easy version to ensure I understand what is being asked
+# input needed: begining monthly starting balance (complete), monthly expenses (complete), monthly deposit (complete) (job), savings interest, N timeframe
+
+'''
+while True:
+    try:
+        balance = int(input('Enter savings balance: '))
+        expenses = int(input('Enter expenses: '))
+        deposit = int(input('Enter deposit: '))
+        time = int(input('Enter timeframe: '))
+        break
+    except:
+        print('Not a number. Only numbers please')
+
+'''
+        
+savings_apy = float(0.1) # this is yearly, since N = months, I need to find monthly
+monthly_apy = savings_apy / 12 # monthly savings apy
+
+# to find balance, after certain amount of months, that tells me i need a for loop
+'''
+for x in range(1, time + 1): # so there is no month that starts with 0
+    balance = (balance - expenses + deposit) * (1 + monthly_apy) # its my running total
+'''
+
+# print(int(balance)) # to remove the decimals
+
+# harder challenge
+
+'''
+The initial balance in your savings account.
+The monthly interest rate (as a percentage).
+The number of months for which the account will be tracked.
+A list of tuples where each tuple contains two values: the deposit and the expense for that month.
+'''
+
+# the version above wants to introduce varibility (different deposit/expenses amount)
+
+# balance and time can be fixed:
+
+
+while True:
+    try:
+        balance = int(input('Enter savings balance: '))
+        time = int(input('Enter timeframe: '))
+        break
+    except:
+        print('Not a number. Only numbers please')
+
+
+# within the time, frame, deposit and expense change
+        # thus, the input is asked within the for loop
+
+for x in range(1, time + 1): # so there is no month that starts with 0
+    expenses = int(input('Enter expenses for this month: '))
+    deposit = int(input('Enter deposit for this month: '))
+    print((expenses, deposit))
+    balance = (balance - expenses + deposit) * (1 + monthly_apy) # its my running total
+
+print(balance)
