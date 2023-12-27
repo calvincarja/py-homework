@@ -15,40 +15,6 @@ print(words)
 amount = Counter(words)
 print(amount)
 
-# ROBOT POISITION **************
-
-# establish grid size 
-grid_size = 6
-
-# define the initial position of the robot
-position = {'x': 0, 'y': 0}
-direction = ''
-
-# function to store the numberical value as the directions value is entered
-
-def getsteps(steps):
-    global direction, position
-    if direction == 'up':
-        position ['y'] += steps
-    elif direction == 'down':
-        position ['y'] -= steps
-    elif direction == 'right':
-        position ['x'] += steps
-    elif direction == 'left':
-        position ['x'] -= steps
-    # lets make sure the robot stays in the grid. position stays in the grid parameters
-    position['x'] = max(0, min(grid_size - 1, position['x']))
-    position['y'] = max(0, min(grid_size - 1, position['y']))
-
-
-
-direction = 'up'
-getsteps(3)
-direction = 'right'
-getsteps(3)
-
-print(position['x'], position['y'])
-
 
 # COUNTING THE USER INPUT EXERCISE **************
 
@@ -1793,7 +1759,7 @@ for z,h in zip(yest_spaces, today_spaces): # zip is used when want to iterate ov
 print(counter)
 
 
-# finding 2 most common words / tuple, for lopo, items(), sorted exercise *************
+# finding 2 most common words / tuple, for lopo, items(), sorted exercise ************* Project idea **
 
 # find 2 most common words with romeo txt
 
@@ -1819,7 +1785,7 @@ print('{} {}'.format(list_words[0], list_words[1]))
 print(sorted([(w,v) for v,w in common_words.items()], reverse=True))
 
 
-# turn string to integer, max/min, test cases
+# turn string to integer, find max/min, test cases
 
 '''high_and_low("1 2 3 4 5")  # return "5 1"
 '''
@@ -1884,7 +1850,7 @@ for hour, dist in sorted(time_dict.items()):
 
 
 
-# cipher project pt 1 exercise **********************
+# cipher project pt 1 exercise ********************** project idea **
     
 
 # create dictionary that key represents a letter, and value switches the key (complete)
@@ -2108,7 +2074,7 @@ while True:
 
 savings_apy = float(0.1) # this is yearly, since N = months, I need to find monthly
 monthly_apy = savings_apy / 12 # monthly savings apy
-initial_balance = balance
+initial_balance = balance # store initial balance
 
 # within the time, frame, deposit and expense change
         # thus, the input is asked within the for loop
@@ -2117,7 +2083,7 @@ monthly_list = []
 for x in range(1, time + 1): # so there is no month that starts with 0
     expenses = int(input('Enter expenses for this month: '))
     deposit = int(input('Enter deposit for this month: '))
-    monthly_list.append((expenses, deposit))
+    monthly_list.append((expenses, deposit)) # to refence tuple from a list
     balance = (balance - expenses + deposit) * (1 + monthly_apy) # its my running total
 
 
@@ -2142,3 +2108,54 @@ for x in range(1, time + 1): # so there is no month that starts with 0
     balance += deposit
     balance -= expenses
     balance *= (1 + monthly_apy)
+
+
+    # saving a password, making it a requirement to contain upper case, exercise **************** Project Idea*
+
+
+# lets first check if 1 letter is uppercase
+    # isupper() is boolean, but all words need to be uppercase
+    # we can run a loop, and if three words have true, pass check
+
+
+# good job - my code is sound and logical
+def web_password (password):
+    str_password = str(password)
+    if not (8 <= len(str_password) <= 12): # validates password length
+        return f"incorrect length of password"
+    upper_list = []
+    for x in password:
+        upper_list.append(x.isupper()) # store true value
+    if not upper_list.count(True) >= 1:
+        return f"Does not include at least one capital letter"
+    return f"password saved"
+
+print(web_password('Hello0oo'))
+
+# a clever alternative version below
+
+# instead of list, use a counter variable 
+# check if the counter is greater than one, stop the loop
+# if counter is less than 1, return password saved message
+
+# i have also update to include lower letter & digit
+
+def web_password(password):
+    str_password = str(password)
+    if not (8 <= len(str_password) <= 12):
+        return "incorrect length of password"
+    upper_count = 0
+    lower_count = 0
+    digit_count = 0
+    for x in password:
+        if x.isupper(): 
+            upper_count += 1 # adds a 1 to each instance of upper == true
+        if x.islower():
+            lower_count += 1
+        if x.isdigit():
+            digit_count += 1
+        if upper_count >= 2 and lower_count >= 3 and digit_count >= 1:  # change this number to require more uppercase letters
+            break # goes directly to final return 
+    if upper_count < 2 or lower_count < 3 or digit_count < 1:
+        return "Does not include at least one capital letter"
+    return "password saved"
