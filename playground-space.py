@@ -1,13 +1,19 @@
-line_sum = []
-line_count = 0
-line_total = 0
-with open('/Users/calvinpineda/Downloads/mbox-short.txt','r') as file:
-    for x in file:
-        if x.startswith('X-DSPAM-Confidence:'):
-            line_count += 1
-            non_space = x.strip()
-            line_split = non_space.split(':')
-            line_sum.append(float(line_split[1]))
-            line_total += float(line_split[1]) # keep a running total
-line_cal = line_total/line_count
-print('Average spam confidence: ',line_cal)
+def web_password(password):
+    str_password = str(password)
+    if not (8 <= len(str_password) <= 12):
+        return "incorrect length of password"
+    upper_count = 0
+    lower_count = 0
+    digit_count = 0
+    for x in password:
+        if x.isupper(): 
+            upper_count += 1 # adds a 1 to each instance of upper == true
+        if x.islower():
+            lower_count += 1
+        if x.isdigit():
+            digit_count += 1
+        if upper_count >= 2 and lower_count >= 3 and digit_count >= 1:  # change this number to require more uppercase letters
+            break # goes directly to final return 
+    if upper_count < 2 or lower_count < 3 or digit_count < 1:
+        return "Does not include at least one capital letter"
+    return "password saved"

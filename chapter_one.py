@@ -2140,6 +2140,8 @@ print(web_password('Hello0oo'))
 
 # i have also update to include lower letter & digit
 
+# if the password meets requriement, pass else, just fail, no need to check again if it fails
+
 def web_password(password):
     str_password = str(password)
     if not (8 <= len(str_password) <= 12):
@@ -2154,8 +2156,8 @@ def web_password(password):
             lower_count += 1
         if x.isdigit():
             digit_count += 1
-        if upper_count >= 2 and lower_count >= 3 and digit_count >= 1:  # change this number to require more uppercase letters
-            break # goes directly to final return 
-    if upper_count < 2 or lower_count < 3 or digit_count < 1:
+        if upper_count >= 2 and lower_count >= 3 and digit_count >= 1:  # if meets requirement, pass the check. 
+            return "password saved" 
+    # if upper_count < 2 or lower_count < 3 or digit_count < 1: instead of breaking, I can just pass 
         return "Does not include at least one capital letter"
-    return "password saved"
+    
