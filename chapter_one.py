@@ -2162,7 +2162,7 @@ def web_password(password):
         return "Does not include at least one capital letter"
     # test v4
 
-# quick array function exercise ************
+# quick practice exercise ************
     
     '''
 def two_small_numbers (numbers):
@@ -2185,5 +2185,104 @@ def two_small_numbers(numbers):
 print(two_small_numbers([4, 9, 7, 1, 2, 4]))
 
 
+# find language of text
+
+with open('/Users/calvinpineda/Downloads/romeo.txt','r') as file:
+    t_count = 0 # enlgish
+    s_count = 0 # french
+    for line in file:
+        line_upper = line.upper()
+        t_count += line_upper.count('T')
+        s_count += line_upper.count('S')
+    print('{} {}'.format(t_count, s_count))
+    if t_count >= s_count:
+        print('The text is in enlgish')
+    else:
+        print('The text is in french')
 
 
+# checking student input to a dictionary, enumarate, all() exercise ******************
+        
+Letter_list = ['A', 'B', 'C', 'D'] # possible letters to choose from
+Answer_bank = {1 : 'B', 2 : 'C', 3 : 'D', 4 : 'A'} # correct answers for each question
+
+
+# start with non-random input // Simple
+
+# ensure only values from letter_list and commas are inputed // there is an example of exact inputs 
+print('Please only enter letters from the following: ', Letter_list)
+
+
+'''
+set().issubset becomes too complicated when using a list of values.
+Set.issubset is better to cross refernece if ALL the values match another list, set ect. not a combination
+
+
+while not set(student_question).issubset({Letter_list}, {','}):
+    print('Please only enter letters A, B, C, D')
+    student_question = input('Enter the answers for each question, seperated by a comma: ')
+
+    
+'''
+while True:
+    student_question = input('Enter the answers for each question, separated by a comma: ')
+    student_question_cap = student_question.upper()
+    student_list = student_question_cap.split(',') # list containing the values of student submission
+
+    if all(x in Letter_list for x in student_list): # this is checking if EACH value in input(student_list) IS PRESENT in the letter_list, letter by letter
+        break
+    else:
+        print('Incorrect input, try agian')
+
+correct_answer = 0 # counter for amount of correct submission
+
+'''
+my if statment is incorrect - x cannot be the value of student list
+AND the key for answer bank
+
+
+for x in student_list:
+    if x == Answer_bank[x]: # cross refernce list to answer bank
+        correct_answer += 1
+'''
+
+# use enumrate to get allow x, to be the value of student list
+# AND be the value of dictionary
+
+for i , x in enumerate(student_list, start=1): # i will be index, x will be value
+    if x == Answer_bank[i]: # does the value of student list match the value of answer bank. It is i, as dictionary only refence the values, not the keys
+        correct_answer += 1
+print(correct_answer)
+
+# cleaner version
+
+Letter_list = ['A', 'B', 'C', 'D'] # possible letters to choose from
+Answer_bank = {1 : 'B', 2 : 'C', 3 : 'D', 4 : 'A'} # correct answers for each question
+
+
+# start with non-random input // Simple
+
+# ensure only values from letter_list and commas are inputed // there is an example of exact inputs 
+print('Please only enter letters from the following: ', Letter_list)
+
+
+while True:
+    student_question = input('Enter the answers for each question, separated by a comma: ')
+    student_question_cap = student_question.upper()
+    student_list = student_question_cap.split(',') # list containing the values of student submission
+
+    if all(x in Letter_list for x in student_list): # this is checking if EACH value in input(student_list) IS PRESENT in the letter_list, letter by letter
+        break
+    else:
+        print('Incorrect input, try agian')
+
+correct_answer = 0 # counter for amount of correct submission
+
+
+# use enumrate to get allow x, to be the value of student list
+# AND be the value of dictionary
+
+for i , x in enumerate(student_list, start=1): # i will be index, x will be value
+    if x == Answer_bank[i]: # does the value of student list match the value of answer bank. It is i, as dictionary only refence the values, not the keys
+        correct_answer += 1
+print(correct_answer)
