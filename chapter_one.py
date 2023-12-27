@@ -2160,4 +2160,30 @@ def web_password(password):
             return "password saved" 
     # if upper_count < 2 or lower_count < 3 or digit_count < 1: instead of breaking, I can just pass 
         return "Does not include at least one capital letter"
+    # test v4
+
+# quick array function exercise ************
     
+    '''
+def two_small_numbers (numbers):
+    int_list = [str(x) for x in numbers] # for x in numbers is not possible as you cannot iterate over integers
+    return int_list
+'''
+
+'''
+def two_small_numbers (numbers):
+    str_num = str(numbers)
+    int_list = [int(x) for x in str_num]
+    int_list.sort()
+    return sum(int_list[0],int_list[1]) # sum function cannot work with two seperate arguments
+'''
+# the input will be an array
+def two_small_numbers(numbers):
+    numbers.sort()
+    return numbers[0] + numbers[1]
+
+print(two_small_numbers([4, 9, 7, 1, 2, 4]))
+
+
+
+
