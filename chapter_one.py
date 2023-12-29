@@ -2164,6 +2164,20 @@ def web_password(password):
 
 # quick practice exercise ************
     
+# checking if input forms a valid traingle 
+    
+# given three values represented as lengths of a traingle
+# first find s = (a+b+c)/2
+# then find area = sqrt[s(s-a)(s-b)(sic)]
+
+def is_triangle(a, b, c):
+    return (a < b + c) and (b < a + c) and (c < a + b) # booleans returning true or false
+    
+
+
+
+# sorting numbers, summing smallest two
+    
     '''
 def two_small_numbers (numbers):
     int_list = [str(x) for x in numbers] # for x in numbers is not possible as you cannot iterate over integers
@@ -2271,6 +2285,7 @@ while True:
     student_question_cap = student_question.upper()
     student_list = student_question_cap.split(',') # list containing the values of student submission
 
+    # all(list 1, list 2) remeber this if i need to check two lists against each other
     if all(x in Letter_list for x in student_list): # this is checking if EACH value in input(student_list) IS PRESENT in the letter_list, letter by letter
         break
     else:
@@ -2286,3 +2301,37 @@ for i , x in enumerate(student_list, start=1): # i will be index, x will be valu
     if x == Answer_bank[i]: # does the value of student list match the value of answer bank. It is i, as dictionary only refence the values, not the keys
         correct_answer += 1
 print(correct_answer)
+
+
+# Remove vowels from input exercise *******************
+
+# given an string input, remove
+# simple method first - one word only
+
+vowels = ['A', 'E', 'I', 'O', 'U']
+
+'''
+def remove_letters (word):
+    new_words = ''
+    word_upper = word.upper()
+    # word_split = word_upper.split()
+    for x in word_upper:
+        if x not in vowels:
+            new_words += x
+    return new_words
+print(remove_letters('calvinaeiou'))
+'''
+
+# multiple words
+
+def remove_letters (word):
+    new_words = ''
+    word_upper = word.upper()
+    word_split = word_upper.split()
+    for x in word_split:
+        for y in x:
+            if y not in vowels:
+                new_words += y
+        new_words += ' ' # since the input might have multiple words, add a space as the loop runs
+    return new_words
+print(remove_letters('calvin aeiou'))
