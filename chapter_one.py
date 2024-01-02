@@ -153,6 +153,21 @@ print('Both entries are numbers:', numone, 'and', numtwo)
 
 
 
+# approaching above prblem on 1/2/24 
+
+while True:
+    user_num = input('enter a number, seperated by a space: ')
+    user_num_split = user_num.split()
+    if len(user_num_split) != 2:
+        print('invalid input. try agin')
+        continue
+    try:
+        user_num_split = [int(x) for x in user_num_split]
+    except ValueError:
+        print('invalid input, try again')
+        continue # keep asking user if valuerror is true
+print('your entry is a number, seperated by a space.')
+
 # continue problem
 # now lets do an if statement to ensure number is less than 1000
 print('enter your first number below')
