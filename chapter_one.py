@@ -163,6 +163,7 @@ while True:
         continue
     try:
         user_num_split = [int(x) for x in user_num_split]
+        break
     except ValueError:
         print('invalid input, try again')
         continue # keep asking user if valuerror is true
@@ -2350,3 +2351,18 @@ def remove_letters (word):
         new_words += ' ' # since the input might have multiple words, add a space as the loop runs
     return new_words
 print(remove_letters('calvin aeiou'))
+
+
+# chapter 4 while loops exercise ***************************
+def play (myjar, machine1):
+    # lets ensure only integers
+    if not isinstance(myjar, int) or not isinstance(machine1, int): # 1st check
+        raise ValueError("Both inputs must be integers, seperated by a comma")
+    # ensure machine1 input only goes up to 35
+    if machine1 > 35: # 2nd check
+        raise ValueError('second input must be less than / equal to 35')
+    if machine1 == 35:
+        myjar += 30
+    return myjar
+
+print(play(10,35)) # check 30 is added to myjar total
