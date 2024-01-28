@@ -2354,6 +2354,9 @@ print(remove_letters('calvin aeiou'))
 
 
 # chapter 4 while loops exercise ***************************
+'''
+    first iteration
+
 def play (myjar, machine1):
     # lets ensure only integers
     if not isinstance(myjar, int) or not isinstance(machine1, int): # 1st check
@@ -2363,6 +2366,29 @@ def play (myjar, machine1):
         raise ValueError('second input must be less than / equal to 35')
     if machine1 == 35:
         myjar += 30
+    return myjar
+
+print(play(10,35)) # check 30 is added to myjar total
+'''
+
+
+def play (myjar, machine1_placement):
+    machine1_payout = 35
+    keep_playing = 0
+    playing_count = 0
+    # lets ensure correct inputs
+    if not isinstance(myjar, int) or not isinstance(machine1_placement, int): # 1st check
+        raise ValueError("Both inputs must be integers, seperated by a comma")
+    # ensure machine1 input only goes up to 35
+    if machine1_placement > 35: # 2nd check
+        raise ValueError('second input must be less than / equal to 35')
+    # calculate casino turns
+    while myjar//machine1_payout > 0:
+        myjar += 30
+        keep_playing = (myjar % machine1_payout) + machine1_placement
+        while keep_playing//machine1_payout > 0:
+            myjar += 30
+
     return myjar
 
 print(play(10,35)) # check 30 is added to myjar total
