@@ -2372,9 +2372,10 @@ print(play(10,35)) # check 30 is added to myjar total
 '''
 
 
+
+'''
 def play (myjar, machine1_placement):
-    machine1_payout = 35
-    keep_playing = 0
+    machine1_payout = 30
     playing_count = 0
     # lets ensure correct inputs
     if not isinstance(myjar, int) or not isinstance(machine1_placement, int): # 1st check
@@ -2383,12 +2384,46 @@ def play (myjar, machine1_placement):
     if machine1_placement > 35: # 2nd check
         raise ValueError('second input must be less than / equal to 35')
     # calculate casino turns
-    while myjar//machine1_payout > 0:
-        myjar += 30
-        keep_playing = (myjar % machine1_payout) + machine1_placement
-        while keep_playing//machine1_payout > 0:
-            myjar += 30
+    while myjar > 0:
+        if myjar + machine1_placement >= 35: 
+            myjar = (myjar - 35) + machine1_payout
+            playing_count += 1
+        machine1_placement = 0 # this restarts the placment to zero - myjar to last a full cycle
+    print('you do not have enough money to play')
+    return playing_count
 
-    return myjar
+print(play(105,0)) # playing_count should equal 3
 
-print(play(10,35)) # check 30 is added to myjar total
+'''
+
+# the issue with my code above, was that i was not subtracting myjar to account for the amount of times it takes to reach 35
+# i was not running the while loop turn by turn, i was trying to summarize, but within a while loop
+
+def play(myjar, machine1_placement):
+    machine1_payout = 30
+    playing_count = 0
+    plays_since_last_win = machine1_placement  # Track the number of plays since last win
+    
+    # Ensure correct inputs
+    if not isinstance(myjar, int) or not isinstance(machine1_placement, int):
+        raise ValueError("Both inputs must be integers, separated by a comma")
+    
+    # Ensure machine1_placement input is less than 35
+    if machine1_placement >= 35:
+        raise ValueError('second input must be less than 35')
+    
+    # Calculate casino turns
+    while myjar > 0:
+        # Play the machine
+        myjar -= 1  # It costs 1 quarter to play - and needs to be tracked turn by turn
+        plays_since_last_win += 1  # Increment the counter for plays since last win
+        
+        # Check for a win
+        if plays_since_last_win == 35: # the loop restarts here until plays_since_last_win reaches 35 - then it continues
+            myjar += machine1_payout  # Add winnings to myjar
+            playing_count += 1  # Increment the number of times played
+            plays_since_last_win = 0  # Reset the counter for plays since last win
+
+    return playing_count
+
+print(play(20, 15))
