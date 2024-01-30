@@ -2394,7 +2394,7 @@ def play (myjar, machine1_placement):
 
 print(play(105,0)) # playing_count should equal 3
 
-'''
+
 
 # the issue with my code above, was that i was not subtracting myjar to account for the amount of times it takes to reach 35
 # i was not running the while loop turn by turn, i was trying to summarize, but within a while loop
@@ -2427,3 +2427,44 @@ def play(myjar, machine1_placement):
     return playing_count
 
 print(play(20, 15))
+'''
+# final part and answer to question
+def play(myjar, machine1_placement, machine2_placement, machine3_placement):
+    machine1_payout = 30 # every 35th turn
+    machine2_payout = 60 # every 100th turn
+    machine3_payout = 9 # every 10th turn
+    playing_count = 0 # answers the question
+    # plays_since_last_win = machine1_placement  # Track the number of plays since last win - i can just pass one varible
+    
+    # Ensure correct inputs
+    if not isinstance(myjar, int) or not isinstance(machine1_placement, int) or not isinstance(machine2_placement, int) or not isinstance(machine3_placement, int):
+        raise ValueError("Both inputs must be integers, separated by a comma")
+    
+    # Ensure machine1_placement input is less than 35
+    if machine1_placement >= 35 or machine2_placement >= 100 or machine3_placement >= 10:
+        raise ValueError('all inputs must be less than their max amount')
+    
+    # Calculate casino turns
+    while myjar > 0:
+        # Play the machine
+        myjar -= 3  # It costs 1 quarter to play - and needs to be tracked turn by turn - the admission
+        machine1_placement += 1  # Increment the counter for plays since last win - the admission
+        machine2_placement += 1
+        machine3_placement += 1
+        playing_count += 3 # 3 times b/c martha is playing three machines at the same time
+        
+        # Check for a win
+        if machine1_placement == 35: # the loop restarts here until plays_since_last_win reaches 35 - then it continues
+            myjar += machine1_payout  # Add winnings to myjar
+            machine1_placement = 0  # Reset the counter for plays since last win
+        if machine2_placement == 100:
+            myjar += machine2_payout
+            machine2_placement = 0
+        if machine3_placement == 10:
+            myjar += machine3_payout
+            machine3_placement = 0
+
+    return playing_count
+
+print(play(48, 3, 10, 4))
+
