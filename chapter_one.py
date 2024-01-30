@@ -2468,3 +2468,41 @@ def play(myjar, machine1_placement, machine2_placement, machine3_placement):
 
 print(play(48, 3, 10, 4))
 
+# cleaned up the code by using a dictonary for the key:value feature
+
+def play(myjar, machine1_placement, machine2_placement, machine3_placement):
+    machine_dict = {'machine1': 30, 'machine2': 60, 'machine3': 9} # keys should be fixed, not a varible that gets updated
+    playing_count = 0 # answers the question
+    # plays_since_last_win = machine1_placement  # Track the number of plays since last win - i can just pass one varible
+    
+    # Ensure correct inputs
+    if not isinstance(myjar, int) or not isinstance(machine1_placement, int) or not isinstance(machine2_placement, int) or not isinstance(machine3_placement, int):
+        raise ValueError("Both inputs must be integers, separated by a comma")
+    
+    # Ensure machine1_placement input is less than 35
+    if machine1_placement >= 35 or machine2_placement >= 100 or machine3_placement >= 10:
+        raise ValueError('all inputs must be less than their max amount')
+    
+    # Calculate casino turns
+    while myjar > 0:
+        # Play the machine
+        myjar -= 3  # It costs 1 quarter to play - three machines are played 
+        machine1_placement += 1  
+        machine2_placement += 1
+        machine3_placement += 1
+        playing_count += 3 # 3 times b/c martha is playing three machines at the same time
+        
+        # Check for a win
+        if machine1_placement == 35: # the loop restarts here until plays_since_last_win reaches 35 - then it continues
+            myjar += machine_dict['machine1']  # Add winnings to myjar
+            machine1_placement = 0  # Reset the counter for plays since last win
+        if machine2_placement == 100:
+            myjar += machine_dict['machine2']
+            machine2_placement = 0
+        if machine3_placement == 10:
+            myjar += machine_dict['machine3']
+            machine3_placement = 0
+
+    return playing_count
+
+print(play(48, 3, 10, 4))
