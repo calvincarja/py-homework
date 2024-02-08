@@ -2506,3 +2506,20 @@ def play(myjar, machine1_placement, machine2_placement, machine3_placement):
     return playing_count
 
 print(play(48, 3, 10, 4))
+
+
+# playlist exercise while loop *************************************
+
+# in order to ensure the input is desired, do not pass a varible. use an input inside the function
+# use the function below as the logic function - refernce it in another function
+def playlist_logic():
+    song_letters = ['A','B','C','D','E']
+    while True:
+        button = input('enter letter').upper()
+        upper_case = button.upper()
+        if upper_case in song_letters:
+            break
+        else:
+            print ('please only input A,B,C,D,E')
+        
+playlist_logic()
