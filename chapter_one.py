@@ -2519,7 +2519,32 @@ def playlist_logic():
         if keep_playing == 'YES':
             button_value = input('enter a number 1 - 3')
             if button_value == '1':
-                
+                song_letters.insert(0, song_letters.pop()) # default it pops last place
         
         
 playlist_logic()
+
+# final answer
+
+def playlist_logic():
+    song_letters = ['A','B','C','D','E']
+    while True: 
+        keep_playing = input('do you want to shuffle your songs: ').upper()
+        if keep_playing == 'YES':
+            button_value = input('enter a number 1 - 3: ')
+            amount_value = int(input('enter the number of times you want to press that button: ')) # while loop constant
+            amount_store = 0 # store inside while loop to reset once user wants to continue shuffling
+            while amount_store < amount_value:
+                if button_value == '1':
+                    song_letters.append(song_letters.pop(0)) # append removes first item, and adds it to the end
+                    amount_store += 1 # to keep track of button amount
+                elif button_value == '2':
+                    song_letters.insert(0, song_letters.pop()) # default pop is last place, thus () is empty - move last item to begin
+                    amount_store += 1 # to keep track of button amount
+                elif button_value == '3':
+                    song_letters.insert(0, song_letters.pop(1)) # swap 2nd item in list with item
+                    amount_store += 1 # to keep track of button amount
+        else:
+            break
+    return song_letters
+        
