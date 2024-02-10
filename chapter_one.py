@@ -2547,4 +2547,31 @@ def playlist_logic():
         else:
             break
     return song_letters
-        
+    
+
+# add p to vowels exericse ****************************************************
+
+# a,e,i,o,u vowels
+
+# given an input (store the input), user inserts a 'p' after the vowel
+    # then, repeats the vowel 
+
+# example kemija --> kePemiPijaPa
+
+# input will be single line, seperated by a space (space will be the list)
+
+# exercise is indiciating only 1 space, but what if it wants more,
+    # do a nested loop to scale the code
+
+def coded_message():
+    vowels_list = ['a','e','i','o','u']
+    vowel_count = 0
+    message = input('enter your message: ')
+    message_list = message.split()
+    for word in message_list: # runs through every item in the list
+        for x in word: # runs through every letter in the word, nested
+            if x in vowels_list:
+                vowel_count += 1
+    return vowel_count
+
+print(coded_message())
