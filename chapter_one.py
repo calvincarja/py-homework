@@ -2575,3 +2575,21 @@ def coded_message():
     return vowel_count
 
 print(coded_message())
+
+# while loop skipping iterations - correct answer for 1 word input
+
+
+def decode_message(message):
+    vowels_list = ['a','e','i','o','u']
+    decoded_message = ''
+    i = 0
+    while i < len(message):
+        if message[i] not in vowels_list: #message[i] is the i index
+            decoded_message += message[i]
+            i += 1 # incrementing the index of i, moves character places
+        else:
+            decoded_message += message[i]
+            i += 3 # thus, here it will skip three places b/c of the fluff two letters 
+    return decoded_message
+
+print(decode_message('apapplepe'))
