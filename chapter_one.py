@@ -2593,3 +2593,33 @@ def decode_message(message):
     return decoded_message
 
 print(decode_message('apapplepe'))
+
+
+# infection rate exercise *****************************************************************
+
+# p is the threshold for the amount of people infected 750
+# R is the amount of people that get infected, only on the next day
+# N is the amount of people infected on day 0
+
+# calculate how many days till P is crossed. 
+
+# this is a geometric sequence
+ # calculate todays infection, add to the total of yesterday
+# day 0 = 1 , day = 5, ratio of infection is 5 per day. 
+
+def infection_rate():
+    p = int(input('enter infection threshold: '))
+    n = int(input('enter amount of people infected day 0: ')) # represents 1
+    r = int(input('the ratio of people infected: '))
+    today_infection = 0
+    previous_infection = n # day 0
+    total_infection = 1 # day 0
+    day = 0 # day count - answer output
+    while total_infection <= p:
+        today_infection = r * previous_infection 
+        total_infection =  total_infection + today_infection 
+        previous_infection = today_infection 
+        day += 1
+    return day
+
+print(infection_rate())
