@@ -2623,3 +2623,34 @@ def infection_rate():
     return day
 
 print(infection_rate())
+
+
+# check each boys answer for test exercise ************************************
+
+def correct_answer():
+    adriano = ['A','B','C','A','B','C','A','B','C']
+    bruno = ['B','A','B','C','B','A','B','C','B']
+    goran = ['C','C','A','A','B','B','C','C','A']
+
+    question_amount = int(input('enter amount of questions: '))
+    answers = input('enter correct answers: ')
+
+    adriano_correct = 0
+    bruno_correct = 0
+    goran_correct = 0
+
+    # its not elif b/c we need to grade all the boys answers. so indep if
+    # same set up can be used with while loop
+    for x in range(question_amount):
+        if answers[x] == adriano[x]:
+            adriano_correct += 1
+        if answers[x] == bruno[x]:
+            bruno_correct += 1
+        if answers[x] == goran[x]:
+            goran_correct += 1
+    
+    boys_dict = {'adriano': adriano_correct, 'bruno': bruno_correct, 'goran': goran_correct}
+
+    return boys_dict
+
+print(correct_answer())
