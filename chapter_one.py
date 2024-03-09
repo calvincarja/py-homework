@@ -2654,3 +2654,18 @@ def correct_answer():
     return boys_dict
 
 print(correct_answer())
+
+
+
+# web scrapping exercise # 1
+
+with open('/Users/calvinpineda/Downloads/words.txt','r') as file:
+    contents = file.read()
+    just_words = contents.replace(",","")
+    word_list = just_words.split()
+    word_dict = {}
+    for x in word_list:
+        word_dict[x] = word_dict.get(x,0) + 1
+
+    sort_list = sorted(word_dict.items(), key=lambda item: item[1], reverse= True)
+print(sort_list)
