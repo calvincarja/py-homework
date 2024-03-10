@@ -2668,4 +2668,43 @@ with open('/Users/calvinpineda/Downloads/words.txt','r') as file:
         word_dict[x] = word_dict.get(x,0) + 1
 
     sort_list = sorted(word_dict.items(), key=lambda item: item[1], reverse= True)
-print(sort_list)
+print(sort_list[:5])
+
+# web scrapping exercise # 2
+
+# version 1
+'''
+def exchange (contents,x,y):
+    while True:
+        if x not in contents:
+            x = input('ensure text is present in file: ')
+        else:
+            break
+    replace = contents.replace(x,y)
+    return replace
+
+with open('/Users/calvinpineda/Downloads/words.txt','r') as file:
+    contents = file.read()
+
+print(contents)
+print(exchange(contents,"hello","calvin"))
+'''
+# version 2
+def exchange (contents,x,y):
+    if x not in contents:
+        return None
+    replace = contents.replace(x,y)
+    return replace
+
+with open('/Users/calvinpineda/Downloads/words.txt','r') as file:
+    contents = file.read()
+
+print(contents)
+x = input("entet the text to replace: ")
+y = input('enter the text that will take its place: ')
+
+while exchange(contents,x,y) is None:
+    print("please ensure the text is in the file")
+    x = input("Enter the text to replace: ")
+
+print(exchange(contents,x,y))
