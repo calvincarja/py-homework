@@ -2670,6 +2670,22 @@ with open('/Users/calvinpineda/Downloads/words.txt','r') as file:
     sort_list = sorted(word_dict.items(), key=lambda item: item[1], reverse= True)
 print(sort_list[:5])
 
+
+# using regilar expression and  counter exercise 1
+import re
+from collections import Counter
+with open('/Users/calvinpineda/Downloads/words.txt','r') as file:
+    contents = file.read().lower() # ensure all case sensitive is ignored
+
+    words = re.findall(r'\b[a-z]+\b',contents)
+
+    words_freq = Counter(words)
+
+    common_words = words_freq.most_common(5)
+
+    print(common_words)
+
+
 # web scrapping exercise # 2
 
 # version 1
