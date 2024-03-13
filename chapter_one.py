@@ -2724,3 +2724,17 @@ while exchange(contents,x,y) is None:
     x = input("Enter the text to replace: ")
 
 print(exchange(contents,x,y))
+
+
+# string manipulation example
+
+text = 'calvin.pineda7@outlook.com'
+
+start = text.find('c')
+print(start) # returns 14
+
+end = text.find('.')
+print(end) # returns 23
+
+extract = text[start : end]
+print(extract)
