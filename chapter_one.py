@@ -2749,3 +2749,28 @@ print(reg_find)
 reg_search = re.search('calvin\.', text)
 if reg_search:
     print(reg_search.group())
+
+# open vs read file 
+    
+    # returns a new line only
+'''
+with open('/Users/calvinpineda/Downloads/words.txt','r') as file:
+    for line in file:
+        if line.startswith("{\\em "):
+            line = line.replace('{\\em everyone}', 'everyone') #this gives me a new line
+            print(line)
+
+'''
+'''
+# modifies the original text
+with open('/Users/calvinpineda/Downloads/romeo.txt','r') as file:
+    lines = file.read()
+    print(lines)
+'''
+'''
+with open('/Users/calvinpineda/Downloads/words.txt','w') as file:
+    for line in lines:
+        if line.startswith('{\\em }'):
+            line=line.replace('{\\em everyone}','everyone')
+        file.write(line)
+'''     
