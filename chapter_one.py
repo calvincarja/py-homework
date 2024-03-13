@@ -2726,7 +2726,7 @@ while exchange(contents,x,y) is None:
 print(exchange(contents,x,y))
 
 
-# string manipulation example
+# string manipulation example *******************************
 
 text = 'calvin.pineda7@outlook.com'
 
@@ -2738,3 +2738,14 @@ print(end) # returns 23
 
 extract = text[start : end]
 print(extract)
+
+# now using regular expressions
+# now use reg expression
+# finds all words starting with c, and returning any characters following it
+reg_find = re.findall('c\w*',text)
+print(reg_find)
+
+# if i only want to find exact matches, using reg expressions, 
+reg_search = re.search('calvin\.', text)
+if reg_search:
+    print(reg_search.group())
