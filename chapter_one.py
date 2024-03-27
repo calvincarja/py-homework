@@ -2774,3 +2774,19 @@ with open('/Users/calvinpineda/Downloads/words.txt','w') as file:
             line=line.replace('{\\em everyone}','everyone')
         file.write(line)
 '''     
+
+# create password exercise
+
+def instructions():
+    print("""
+    Hello - below are the critieras needed to create a new password
+    Password cannot contain leading or trailing spaces
+    password cannot be same as email
+    password must contain both upper and lower case letters
+    password must contain alpha and numerical values
+    password cannot have three or more consecutive same characters
+    password must contain one special character
+    passwors must be 8 - 20 characters length
+    """)
+
+instructions()
