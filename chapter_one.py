@@ -2790,3 +2790,63 @@ def instructions():
     """)
 
 instructions()
+
+# contined code
+
+def user_password():
+    password = input('Enter your password below:')
+    return password
+
+def trailing_leading_spaces(password):
+    while True:
+        if password != password.strip(): # if the password does not contain leading/trailing spaces, it will match exactly password.strip , breaking the loop, and vice versa
+            print('Your password violated the first rule, please try again')
+            password = user_password()
+        else:
+            print('passed first criteria')
+            break
+    return password
+
+def total_password_check():
+    instructions()
+    password = user_password()
+    password = trailing_leading_spaces(password)
+
+total_password_check()
+
+'''
+password_strip = password.__contains__(" ") i am checking if the password contains any space, when in fact i should only check leading/trailing
+the function below is incorrect, since trailing leading spaces accepts a password varible, i need to intilize it inside
+def total_password_check():
+    instructions()
+    user_password()
+    trailing_leading_spaces()
+
+password = user_password()
+password = trailing_leading_spaces(password) 
+
+vs 
+
+password = user_password()
+trailing_leading_spaces(password)
+
+is the following:
+First example
+password = user_password() is initializing the password varible and capturing the password that is returned by user_password()
+then, the user_password(password) is called for the trailing_leading_spaces() function, resulting in trailing_leading_spaces(password)
+the result of trailing_leading_spaces(password), will be stored back into password 
+
+second example
+similar explanition for password = user_password(), however, when trailing_leading_spaced(password) is called, its not stored anywhere
+thus, when the function code continues, it will still refernce password = user_password(), not the password from trailing_leading_spaces
+'''
+    
+
+'''
+word = ' hello'
+strip_space = word.strip()
+strip_contain = word.__contains__(' ')
+print(strip_space)
+print(word)
+print(strip_contain)
+'''
