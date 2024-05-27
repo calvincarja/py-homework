@@ -2850,3 +2850,20 @@ print(strip_space)
 print(word)
 print(strip_contain)
 '''
+
+# codewars - reverse a given string, keep the spaces exercises *********
+
+'''word = "hello"
+word_list = list(word)
+# word_split = word.split() #becomes a list
+word_list.reverse()
+print(word_list)
+'''
+
+# easy manual solution
+word = "hello world"
+word_split = word.split()
+word_split_one = word_split[0]
+word_split_two = word_split[1]
+
+print(f"{word_split_one[::-1]} {word_split_two[::-1]}")
