@@ -2867,3 +2867,12 @@ word_split_one = word_split[0]
 word_split_two = word_split[1]
 
 print(f"{word_split_one[::-1]} {word_split_two[::-1]}")
+
+# take it up a notch - was able to []'olleh', 'dlrow']
+
+words = "hello world"
+words_split = words.split() # seperate by space - creates list
+list_back = []
+for x in words_split:
+    words_backwards = "".join(reversed(x))
+    list_back.append(words_backwards)
