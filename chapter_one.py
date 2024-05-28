@@ -2876,3 +2876,13 @@ list_back = []
 for x in words_split:
     words_backwards = "".join(reversed(x))
     list_back.append(words_backwards)
+
+# take it up a notch - output the words, with the space
+words = "hello world"
+words_split = words.split()
+word_back = ""
+for x in words_split:
+    words_backwards = "".join(reversed(x))
+    word_back += words_backwards + " "  # add a space after each word
+
+print(word_back)  # Output: "olleh dlrow"
