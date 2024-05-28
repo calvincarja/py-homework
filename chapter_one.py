@@ -2886,3 +2886,12 @@ for x in words_split:
     word_back += words_backwards + " "  # add a space after each word
 
 print(word_back)  # Output: "olleh dlrow"
+
+# lets turn it into a function
+def backwards (text):
+    words_split = text.split()
+    word_back = ""
+    for x in words_split:
+        words_backwards = "".join(reversed(x))
+        word_back += words_backwards + " "
+    return(word_back)
